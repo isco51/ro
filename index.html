@@ -1,215 +1,460 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nintendo Switch 2 Giveaway - Win Yours Today!</title>
+    <title>Roblox Rewards - Get Your Robux!</title>
+    
+    <!-- SEO and Social Sharing Meta Tags -->
+    <meta name="description" content="Claim your free Robux by completing simple tasks! Enter your Roblox username to get started and choose from a variety of Robux rewards.">
+    <meta name="keywords" content="Roblox, Robux, free Robux, rewards, gaming, giveaway">
+    <meta property="og:title" content="Roblox Rewards - Get Your Free Robux!">
+    <meta property="og:description" content="The #1 place for Roblox fans to earn free Robux. Fast, safe, and easy.">
+    <meta property="og:image" content="https://cdn.prod.website-files.com/67329a5ebeec6bec4738e42f/6765e8af62cf64412d6c3f32_1milgiveaway1920x1080.png">
+    <meta property="og:url" content="https://your-website-url.com">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tone.js for Sound Effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
     <style>
+        /* Custom Styles */
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: #1A1A1A;
+            color: #F5F5F5;
+            overflow-x: hidden;
         }
-        .cta-button {
+
+        /* Custom gradient and glow for buttons */
+        .btn-primary {
+            background-image: linear-gradient(to right, #6C00FF, #CFFF04);
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+            box-shadow: 0 0 15px #CFFF04, 0 0 5px #6C00FF;
         }
-        .cta-button:hover {
+        .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6);
+            box-shadow: 0 0 25px #CFFF04, 0 0 10px #6C00FF;
         }
-        .pulse-dot {
-            animation: pulse 2s infinite;
+
+        /* Ripple effect for buttons */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
         }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
         }
-        #countdown div {
-            background: rgba(0,0,0,0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            border: 1px solid rgba(255,255,255,0.1);
+        
+        /* Glowing card effect */
+        .glowing-card {
+            background-color: rgba(42, 42, 42, 0.8);
+            border: 1px solid #6C00FF;
+            box-shadow: 0 0 15px rgba(108, 0, 255, 0.5);
+            transition: all 0.3s ease;
         }
-        .modal-enter { animation: fadeIn 0.3s ease-out; }
-        .modal-leave { animation: fadeOut 0.3s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+        .glowing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(108, 0, 255, 0.8), 0 0 10px #CFFF04;
+        }
+
+        /* Animated green checkmark */
+        .checkmark__circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 2;
+            stroke-miterlimit: 10;
+            stroke: #7ac142;
+            fill: none;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+        .checkmark {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 2;
+            stroke: #fff;
+            stroke-miterlimit: 10;
+            margin: 10% auto;
+            box-shadow: inset 0px 0px 0px #7ac142;
+            animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+        }
+        .checkmark__check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+        }
+        @keyframes stroke {
+            100% { stroke-dashoffset: 0; }
+        }
+        @keyframes scale {
+            0%, 100% { transform: none; }
+            50% { transform: scale3d(1.1, 1.1, 1); }
+        }
+        @keyframes fill {
+            100% { box-shadow: inset 0px 0px 0px 30px #7ac142; }
+        }
+
+        /* Subtle background particle animation */
+        @keyframes animate-particles {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: #6C00FF;
+            animation: animate-particles 25s linear infinite;
+        }
+        
+        /* Sparkle animation for footer badge */
+        @keyframes sparkle-animation {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.5); opacity: 1; }
+        }
+        .sparkle {
+            animation: sparkle-animation 1.5s infinite;
+        }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
+<body class="relative">
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-gray-900 to-black min-h-screen flex flex-col items-center justify-center p-6 text-center">
-        
-        <img src="https://cdn.mos.cms.futurecdn.net/Krt7Qkn89KHC5TJpHiP9CY.jpg" 
-             alt="Nintendo Switch 2 Giveaway" 
-             class="max-w-2xl w-full mx-auto mb-8 rounded-lg shadow-2xl"
-             onerror="this.onerror=null;this.src='https://placehold.co/896x504/ef4444/ffffff?text=Image+Not+Found';">
+    <!-- Background Particles -->
+    <div id="particles-container" class="absolute top-0 left-0 w-full h-full overflow-hidden z-0"></div>
 
-        <div class="bg-black bg-opacity-20 p-8 rounded-2xl w-full max-w-3xl">
-            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-wider text-shadow-lg">
-                <span class="text-red-500">Win Your</span> Nintendo Switch 2
+    <!-- Sticky Header -->
+    <header class="sticky top-0 bg-[#1A1A1A]/80 backdrop-blur-sm shadow-lg shadow-[#6C00FF]/20 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">
+                <span class="text-[#CFFF04]">R</span>obux<span class="text-[#CFFF04]">R</span>ewards
+            </a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#rewards" class="text-gray-300 hover:text-white transition-colors duration-300">Rewards</a>
+                <a href="#social-proof" class="text-gray-300 hover:text-white transition-colors duration-300">Testimonials</a>
+                <a href="#footer" class="text-gray-300 hover:text-white transition-colors duration-300">Support</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="relative z-10">
+        <!-- PAGE 1: Roblox Identity Simulation -->
+        <section id="page-1" class="min-h-screen flex flex-col">
+            <!-- Header Image -->
+            <div class="w-full h-64 md:h-96">
+                <img src="https://cdn.prod.website-files.com/67329a5ebeec6bec4738e42f/6765e8af62cf64412d6c3f32_1milgiveaway1920x1080.png" 
+                     alt="Roblox 1 Million Robux Giveaway"
+                     class="w-full h-full object-cover"
+                     onerror="this.onerror=null; this.src='https://placehold.co/1920x1080/1A1A1A/F5F5F5?text=Roblox+Giveaway';">
+            </div>
+
+            <!-- Username Input Section -->
+            <div id="username-input-section" class="flex-grow container mx-auto p-6 flex flex-col justify-center items-center text-center">
+                <h1 class="text-4xl md:text-6xl font-black uppercase tracking-wider mb-4">
+                    <span class="text-[#CFFF04]">Claim</span> Your Reward
+                </h1>
+                <p class="text-lg text-gray-300 mb-8 max-w-2xl">Enter your Roblox username below to connect your account and start earning free Robux instantly!</p>
+                <form id="username-form" class="w-full max-w-lg">
+                    <div class="flex flex-col sm:flex-row items-center gap-4">
+                        <input type="text" id="roblox-username" placeholder="Enter Your Roblox Username" class="w-full text-center text-lg px-4 py-3 rounded-lg bg-[#2A2A2A] border-2 border-[#6C00FF] focus:outline-none focus:ring-2 focus:ring-[#CFFF04] text-white transition-all duration-300">
+                        <button type="submit" class="btn-primary relative overflow-hidden w-full sm:w-auto text-black font-bold text-lg px-8 py-3 rounded-lg whitespace-nowrap">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Simulated Profile Section (hidden by default) -->
+            <div id="simulated-profile-section" class="hidden flex-grow container mx-auto p-6 flex flex-col justify-center items-center text-center">
+                <div class="bg-[#2A2A2A] p-8 rounded-2xl shadow-2xl shadow-[#000]/50 border border-[#6C00FF]/50 w-full max-w-md">
+                    <img id="simulated-avatar" src="https://logodix.com/logo/1613531.png" alt="Roblox Avatar" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-[#CFFF04] bg-white/10 p-2" onerror="this.onerror=null; this.src='https://placehold.co/150/6C00FF/FFFFFF?text=R';">
+                    <h2 id="display-username" class="text-3xl font-bold text-white"></h2>
+                    <div class="my-4 text-gray-300">
+                        <div class="px-2">
+                            <p class="font-bold text-lg text-white" id="friends-count">182</p>
+                            <p class="text-sm">Friends</p>
+                        </div>
+                    </div>
+                    <div id="verification-status" class="mt-4 flex items-center justify-center gap-2 text-2xl font-bold text-gray-400">
+                        <div class="w-6 h-6 border-2 border-gray-400 rounded-full animate-spin"></div>
+                        Connecting...
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 2: Robux Reward Selection (hidden by default) -->
+        <section id="page-2" class="hidden min-h-screen container mx-auto p-6 flex flex-col justify-center items-center text-center">
+            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-wider mb-2">
+                Choose Your <span class="text-[#CFFF04]">Robux</span> Reward
             </h1>
-            <p class="mt-4 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-                The next generation of gaming is here. Be one of the first to own the revolutionary Nintendo Switch 2. Enter the official giveaway!
-            </p>
-            
-            <div id="countdown-container" class="my-6">
-                <h3 class="text-lg font-semibold text-red-400 mb-3">This Month's Giveaway Ends In:</h3>
-                <div id="countdown" class="flex justify-center gap-3 md:gap-6 text-white">
-                    <div><span id="days" class="text-3xl md:text-4xl font-bold">00</span><span class="block text-xs text-gray-400">Days</span></div>
-                    <div><span id="hours" class="text-3xl md:text-4xl font-bold">00</span><span class="block text-xs text-gray-400">Hours</span></div>
-                    <div><span id="minutes" class="text-3xl md:text-4xl font-bold">00</span><span class="block text-xs text-gray-400">Minutes</span></div>
-                    <div><span id="seconds" class="text-3xl md:text-4xl font-bold">00</span><span class="block text-xs text-gray-400">Seconds</span></div>
-                </div>
+            <p class="text-lg text-gray-300 mb-12">Select one of the rewards below to proceed.</p>
+            <div id="rewards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 w-full">
+                <!-- Reward cards will be dynamically inserted here -->
             </div>
+        </section>
 
-            <div>
-                <label for="contact-id" class="block text-md text-gray-300 mb-2">Enter your Gaming or Social Username to be contacted:</label>
-                <div class="flex flex-col sm:flex-row gap-2 justify-center">
-                    <input type="text" id="contact-id" name="contact-id" class="bg-gray-800 text-white border-2 border-gray-600 rounded-full py-3 px-6 w-full sm:w-auto flex-grow focus:outline-none focus:border-red-500 transition" placeholder="e.g., YourDiscord#1234 or @YourTwitter">
-                    <button id="main-cta-button" class="cta-button inline-block bg-red-600 text-white font-bold text-lg py-3 px-8 rounded-full uppercase tracking-widest hover:bg-red-700 whitespace-nowrap">
-                        Enter Now!
-                    </button>
-                </div>
-                <!-- Social Icons -->
-                <div class="flex justify-center items-center gap-4 mt-4">
-                    <svg class="w-6 h-6 text-gray-500" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><title>Discord</title><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3847-.3973-.8742-.6083-1.2495a.0741.0741 0 00-.0785-.0371 19.7363 19.7363 0 00-4.8851 1.5152.069.069 0 00-.0321.0256C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0321.053c1.8026 1.0239 3.6234 1.5652 5.4442 1.8615a.0741.0741 0 00.0864-.0492c.302-.6347.5752-1.298.7992-1.9806a.0741.0741 0 00-.0446-.0864c-.46-.1636-.899-.3592-1.311-.5806a.0741.0741 0 00-.0864.011c-.1197.0864-.2315.1807-.3354.2762a.0741.0741 0 00.011.1197c2.1016 1.1512 4.5629 1.1512 6.6269 0a.0741.0741 0 00.011-.1197c-.1039-.0955-.2157-.1898-.3354-.2762a.0741.0741 0 00-.0864-.011c-.412.2214-.851.417-1.311.5806a.0741.0741 0 00-.0446.0864c.224.6826.4972 1.3459.7992 1.9806a.0741.0741 0 00.0864.0492c1.8208-.2963 3.6416-.8376 5.4442-1.8615a.0824.0824 0 00.0321-.053c.5-4.3887-.5453-8.921-.5453-8.921a.069.069 0 00-.0321-.0256zM8.02 15.3312c-.8422 0-1.5242-1.0239-1.5242-2.2834 0-1.2595.682-2.2834 1.5242-2.2834.8422 0 1.5242 1.0239 1.5242 2.2834 0 1.2595-.682 2.2834-1.5242 2.2834zm7.9548 0c-.8422 0-1.5242-1.0239-1.5242-2.2834 0-1.2595.682-2.2834 1.5242-2.2834.8422 0 1.5242 1.0239 1.5242 2.2834.0001 1.2595-.682 2.2834-1.5242 2.2834z"/></svg>
-                    <svg class="w-5 h-5 text-gray-500" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><title>X</title><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
-                    <svg class="w-6 h-6 text-gray-500" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.06 1.17-.249 1.805-.413 2.227-.217.562-.477.96-.896 1.381-.42.419-.819.679-1.381.896-.422.164-1.057.36-2.227.413-1.266.057-1.646.07-4.85.07s-3.585-.015-4.85-.074c-1.17-.06-1.805-.249-2.227-.413-.562-.217-.96-.477-1.381-.896-.419-.42-.679-.819-.896-1.381-.164-.422-.36-1.057-.413-2.227-.057-1.266-.07-1.646-.07-4.85s.015-3.585.07-4.85c.055-1.17.249-1.805.413-2.227.217-.562.477.96.896-1.381.42-.419.819-.679 1.381-.896.422-.164 1.057-.36 2.227-.413C8.415 2.177 8.797 2.16 12 2.16zm0 9.04c-1.884 0-3.415 1.53-3.415 3.415s1.53 3.415 3.415 3.415 3.415-1.53 3.415-3.415-1.53-3.415-3.415-3.415zm0 5.49c-1.146 0-2.075-.93-2.075-2.075S10.854 9.95 12 9.95s2.075.93 2.075 2.075-.93 2.075-2.075 2.075zm4.905-6.88c-.622 0-1.125.503-1.125 1.125s.503 1.125 1.125 1.125 1.125-.503 1.125-1.125-.503-1.125-1.125-1.125z"/></svg>
-                    <svg class="w-6 h-6 text-gray-500" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><title>Telegram</title><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.17.91-.494 1.208-.822 1.23-.696.047-1.225-.46-1.9- .902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.04-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.662 3.488-1.353 5.758-2.245 6.62-2.613 2.188-.91 2.968-1.23 3.545-1.25z"/></svg>
-                    <svg class="w-6 h-6 text-gray-500" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><title>Twitch</title><path d="M11.571 4.714h1.715v5.143H11.57zm4.572 0h1.714v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0H6zm14.571 11.143-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714v9.429z"/></svg>
-                    <svg class="w-6 h-6 text-gray-500" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><title>TikTok</title><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-2.43.05-4.84-.95-6.43-2.88-1.59-1.93-2.23-4.5-1.96-6.91.24-2.11 1.1-4.1 2.6-5.62 1.5-1.52 3.4-2.43 5.5-2.51.08 1.55.63 3.1 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-2.43.05-4.84-.95-6.43-2.88-1.59-1.93-2.23-4.5-1.96-6.91.24-2.11 1.1-4.1 2.6-5.62 1.5-1.52 3.4-2.43 5.5-2.51Z"/></svg>
-                </div>
-                <p class="mt-4 text-sm text-gray-400">Then, complete a short partner offer to confirm your entry.</p>
-            </div>
+        <!-- Ad Slot 1: 320x50 Banner -->
+        <div class="my-8 flex justify-center">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '05b04a59c653df8c42615de25ee399e4',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/05b04a59c653df8c42615de25ee399e4/invoke.js"></script>
         </div>
-    </section>
 
-    <!-- Live Stats & Security Badges -->
-    <section class="bg-gray-800 py-8">
-        <div class="container mx-auto px-6"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center"><div class="bg-gray-700 p-6 rounded-xl"><div class="flex items-center justify-center"><div class="pulse-dot h-3 w-3 bg-green-500 rounded-full mr-3"></div><h3 class="text-2xl font-bold"><span id="online-users">247</span></h3></div><p class="text-gray-400 mt-2">Users Online</p></div><div class="bg-gray-700 p-6 rounded-xl"><h3 class="text-2xl font-bold"><span id="monthly-winners">58</span></h3><p class="text-gray-400 mt-2">Winners This Month</p></div><div class="bg-gray-700 p-6 rounded-xl flex items-center justify-center space-x-4"><div><svg class="w-8 h-8 mx-auto text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><p class="text-sm mt-1 text-gray-300">Verified</p></div><div><svg class="w-8 h-8 mx-auto text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg><p class="text-sm mt-1 text-gray-300">SSL Secured</p></div></div></div></div>
-    </section>
+        <!-- Social Proof Section -->
+        <section id="social-proof" class="py-16 bg-[#2A2A2A]/50">
+            <div class="container mx-auto px-6 text-center">
+                <div class="mb-12">
+                    <h3 class="text-3xl font-bold">Join Thousands of Happy Players!</h3>
+                    <div class="mt-2 text-xl text-[#CFFF04] font-semibold">
+                        <span class="animate-pulse">🔴</span> Currently Online: <span id="online-counter">9,823</span> users
+                    </div>
+                </div>
+                <div id="testimonials-carousel" class="relative w-full max-w-3xl mx-auto h-48">
+                    <!-- Testimonials will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
 
-    <!-- Image Gallery -->
-    <section class="py-16 bg-gray-900">
-        <div class="container mx-auto px-6"><h2 class="text-3xl font-bold text-center mb-10">First Look at the Future of Gaming</h2><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"><img src="https://www.nintendo.com/sg/switch2/assets/img/top/switch2_movie_thum.jpg" alt="Switch 2 Official Teaser" class="rounded-lg shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/800x450/ef4444/ffffff?text=Image+Not+Found';"><img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/12/switch.jpg" alt="Switch 2 Lifestyle" class="rounded-lg shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/1200x600/ef4444/ffffff?text=Image+Not+Found';"><img src="https://i.redd.it/can28untzhaf1.jpeg" alt="Switch 2 Fan Concept" class="rounded-lg shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/1280x720/ef4444/ffffff?text=Image+Not+Found';"></div></div>
-    </section>
-
-    <!-- =============================================================== -->
-    <!-- Ad Slot 1: Native Banner (New Code) -->
-    <!-- =============================================================== -->
-    <section class="py-10 bg-gray-900 flex justify-center">
-        <div class="container mx-auto px-6 text-center">
+        <!-- Ad Slot 2: Native Banner -->
+        <div class="my-8 flex justify-center">
             <script async="async" data-cfasync="false" src="//pl27254507.profitableratecpm.com/25822a516a5a48c747d9ad370f7bb2f3/invoke.js"></script>
             <div id="container-25822a516a5a48c747d9ad370f7bb2f3"></div>
         </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="bg-gray-800 py-16">
-        <div class="container mx-auto px-6"><h2 class="text-3xl font-bold text-center mb-10">What Our Winners Say</h2><div class="grid grid-cols-1 md:grid-cols-3 gap-8"><div class="bg-gray-700 p-6 rounded-lg"><p class="text-gray-300">"They contacted me on Discord! I completed a simple gaming survey and a week later the Switch 2 was at my door. This is legit!"</p><div class="flex items-center mt-4"><img class="w-12 h-12 rounded-full object-cover" src="https://placehold.co/100x100/334155/ffffff?text=J" alt="User Avatar"><div class="ml-4"><p class="font-bold">Jessica L.</p><p class="text-sm text-yellow-400">★★★★★</p></div></div></div><div class="bg-gray-700 p-6 rounded-lg"><p class="text-gray-300">"Was skeptical at first, but it's real. My son is so happy with his new Switch 2. Thank you so much!"</p><div class="flex items-center mt-4"><img class="w-12 h-12 rounded-full object-cover" src="https://placehold.co/100x100/334155/ffffff?text=M" alt="User Avatar"><div class="ml-4"><p class="font-bold">Mike T.</p><p class="text-sm text-yellow-400">★★★★★</p></div></div></div><div class="bg-gray-700 p-6 rounded-lg"><p class="text-gray-300">"The process was quick and easy. Got a message on Twitter and confirmed my win. 10/10 would recommend giving it a try."</p><div class="flex items-center mt-4"><img class="w-12 h-12 rounded-full object-cover" src="https://placehold.co/100x100/334155/ffffff?text=S" alt="User Avatar"><div class="ml-4"><p class="font-bold">Sarah P.</p><p class="text-sm text-yellow-400">★★★★★</p></div></div></div></div></div>
-    </section>
-
-    <!-- Final CTA Section -->
-    <section class="bg-gray-900 py-20 text-center">
-        <div class="container mx-auto px-6"><h2 class="text-4xl font-black">Your Chance is NOW!</h2><p class="text-lg text-gray-300 mt-4 max-w-xl mx-auto">Don't wait! Entries are limited and winners are chosen throughout the month. Complete your entry now to secure your spot.</p><div class="mt-8"><a href="https://installchecker.com/cl/i/1o468e" class="cta-button inline-block bg-red-600 text-white font-bold text-xl py-4 px-10 rounded-full uppercase tracking-widest hover:bg-red-700">Confirm My Entry!</a></div></div>
-    </section>
-
-    <!-- =============================================================== -->
-    <!-- Ad Slot 2: 320x50 Banner (New Code) -->
-    <!-- =============================================================== -->
-    <div class="py-6 bg-gray-900 flex justify-center">
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '05b04a59c653df8c42615de25ee399e4',
-                'format' : 'iframe',
-                'height' : 50,
-                'width' : 320,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/05b04a59c653df8c42615de25ee399e4/invoke.js"></script>
-    </div>
-
+    </main>
+    
     <!-- Footer -->
-    <footer class="bg-gray-800 text-center py-6">
-        <p class="text-gray-500 text-sm">&copy; 2024 Switch 2 Promotions. All Rights Reserved.</p><div class="mt-2 space-x-4"><a href="#" class="text-gray-400 hover:text-white text-xs underline">Terms & Conditions</a><a href="#" class="text-gray-400 hover:text-white text-xs underline">Privacy Policy</a></div>
+    <footer id="footer" class="bg-black/50 py-8">
+        <div class="container mx-auto px-6 text-center text-gray-400">
+            <div class="flex justify-center items-center gap-2 mb-4">
+                <span class="sparkle text-2xl text-[#CFFF04]">✨</span>
+                <p class="font-bold text-lg text-white">Made for Roblox fans</p>
+                <span class="sparkle text-2xl text-[#CFFF04]" style="animation-delay: 0.5s;">✨</span>
+            </div>
+            <div class="flex justify-center gap-6 mb-4">
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Support</a>
+            </div>
+            <p class="text-sm">&copy; 2024 RobuxRewards. All rights reserved. Not affiliated with Roblox Corporation.</p>
+        </div>
     </footer>
 
-    <!-- Modal for Confirmation -->
-    <div id="confirmation-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 modal-enter">
-        <div class="bg-gray-800 rounded-lg shadow-2xl p-8 max-w-md w-full text-center border border-gray-700">
-            <h2 class="text-2xl font-bold text-green-400 mb-4">Your Entry is Reserved!</h2>
-            <p class="text-gray-300 mb-6">
-                Your username, <strong id="modal-username" class="text-white"></strong>, has been reserved for the giveaway. To finalize your spot, you MUST complete one partner offer on the next page.
-            </p>
-            <p class="text-red-500 font-bold mb-6">Entries without a completed offer will be invalid.</p>
-            <a id="modal-confirm-button" href="https://installchecker.com/cl/i/1o468e" class="cta-button inline-block w-full bg-green-600 text-white font-bold text-lg py-3 px-8 rounded-full uppercase tracking-widest hover:bg-green-700">
-                Complete to Confirm Entry
+    <!-- Modal Popup (hidden by default) -->
+    <div id="task-modal" class="hidden fixed inset-0 bg-black/80 flex justify-center items-center z-50 p-4">
+        <div class="bg-[#1A1A1A] max-w-lg w-full p-8 rounded-2xl shadow-2xl shadow-[#6C00FF]/50 border-2 border-[#6C00FF] text-center relative animate-fade-in">
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+            <h2 class="text-3xl font-bold text-[#CFFF04] mb-4">Final Step!</h2>
+            <p class="text-lg text-white">To activate your Robux reward, you must complete <span class="font-bold text-[#CFFF04]">ONE</span> short task.</p>
+            <p class="text-gray-300 mt-2">This could be downloading an app, trying a new game, or verifying your identity through a quick challenge. Once complete, your Robux will be sent to your account instantly!</p>
+            <a href="https://installchecker.com/cl/i/1o468e" target="_blank" rel="noopener noreferrer" class="block mt-6">
+                <button class="btn-primary relative overflow-hidden w-full text-black font-bold text-lg px-8 py-3 rounded-lg">
+                    Start Task Now
+                </button>
             </a>
-            <button id="modal-close-button" class="text-gray-500 hover:text-white mt-4 text-sm">Cancel</button>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // --- Dynamic Numbers & Countdown Scripts ---
-            const onlineUsersEl = document.getElementById('online-users');
-            const monthlyWinnersEl = document.getElementById('monthly-winners');
-            let onlineUsers = 247;
-            let monthlyWinners = 58;
-            function updateOnlineUsers() { const change = Math.floor(Math.random() * 6) - 3; onlineUsers += change; if (onlineUsers < 150) onlineUsers = 150; onlineUsersEl.textContent = onlineUsers.toLocaleString(); }
-            function updateMonthlyWinners() { if (Math.random() < 0.005) { monthlyWinners += 1; monthlyWinnersEl.textContent = monthlyWinners.toLocaleString(); } }
-            setInterval(updateOnlineUsers, Math.random() * (5000 - 2500) + 2500);
-            setInterval(updateMonthlyWinners, Math.random() * (15000 - 8000) + 8000);
-            const daysEl = document.getElementById('days'), hoursEl = document.getElementById('hours'), minutesEl = document.getElementById('minutes'), secondsEl = document.getElementById('seconds');
-            const today = new Date(), lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-            lastDayOfMonth.setHours(23, 59, 59);
-            const countDownDate = lastDayOfMonth.getTime();
-            const timerInterval = setInterval(function() {
-                const now = new Date().getTime(); const distance = countDownDate - now;
-                if (distance < 0) { clearInterval(timerInterval); document.getElementById('countdown-container').innerHTML = "<h3 class='text-xl text-green-400 font-bold'>This month's giveaway has ended! New one starts soon.</h3>"; return; }
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24)), hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)), minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)), seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                daysEl.textContent = days < 10 ? '0' + days : days; hoursEl.textContent = hours < 10 ? '0' + hours : hours; minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes; secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds;
-            }, 1000);
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Sound Engine ---
+            const synth = new Tone.Synth().toDestination();
+            const playClickSound = () => synth.triggerAttackRelease("C4", "8n");
+            const playSuccessSound = () => synth.triggerAttackRelease("G5", "8n", Tone.now() + 0.1);
 
-            // --- Interactive Modal Script ---
-            const mainCtaButton = document.getElementById('main-cta-button');
-            const modal = document.getElementById('confirmation-modal');
-            const modalCloseButton = document.getElementById('modal-close-button');
-            const contactInput = document.getElementById('contact-id');
-            const modalUsername = document.getElementById('modal-username');
+            // --- Page Elements ---
+            const page1 = document.getElementById('page-1');
+            const page2 = document.getElementById('page-2');
+            const usernameForm = document.getElementById('username-form');
+            const usernameInput = document.getElementById('roblox-username');
+            const usernameInputSection = document.getElementById('username-input-section');
+            const simulatedProfileSection = document.getElementById('simulated-profile-section');
+            const verificationStatus = document.getElementById('verification-status');
+            const displayUsername = document.getElementById('display-username');
+            const friendsCountEl = document.getElementById('friends-count');
+            const simulatedAvatar = document.getElementById('simulated-avatar');
 
-            mainCtaButton.addEventListener('click', function(e) {
-                e.preventDefault(); 
-                const username = contactInput.value.trim();
-                if (username === "") {
-                    contactInput.classList.add('border-red-500');
-                    setTimeout(() => contactInput.classList.remove('border-red-500'), 1000);
-                    return; 
+            const rewardsContainer = document.getElementById('rewards');
+            const taskModal = document.getElementById('task-modal');
+            const closeModalBtn = document.getElementById('close-modal');
+
+            // --- Ripple Effect for Buttons ---
+            function createRipple(event) {
+                const button = event.currentTarget;
+                const circle = document.createElement("span");
+                const diameter = Math.max(button.clientWidth, button.clientHeight);
+                const radius = diameter / 2;
+
+                circle.style.width = circle.style.height = `${diameter}px`;
+                circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+                circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+                circle.classList.add("ripple");
+
+                const ripple = button.getElementsByClassName("ripple")[0];
+                if (ripple) {
+                    ripple.remove();
                 }
-                modalUsername.textContent = username; 
-                modal.classList.remove('hidden');
-                modal.classList.add('modal-enter');
-                modal.classList.remove('modal-leave');
-            });
-
-            function closeModal() {
-                modal.classList.add('modal-leave');
-                modal.classList.remove('modal-enter');
-                setTimeout(() => {
-                    modal.classList.add('hidden');
-                }, 300); 
+                button.appendChild(circle);
             }
 
-            modalCloseButton.addEventListener('click', closeModal);
-            modal.addEventListener('click', function(e) { if (e.target === modal) { closeModal(); } });
+            // --- Page 1: Username Submission Logic ---
+            usernameForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                playClickSound();
+                const username = usernameInput.value.trim();
+                if (username === '') {
+                    // In a real app, you'd show a custom modal, not an alert.
+                    console.error('Please enter a username.');
+                    return;
+                }
+
+                // Start simulation
+                usernameInputSection.classList.add('hidden');
+                simulatedProfileSection.classList.remove('hidden');
+                displayUsername.textContent = username;
+                
+                // Randomize stats
+                friendsCountEl.textContent = Math.floor(100 + Math.random() * 400);
+
+                // Simulate verification process
+                setTimeout(() => {
+                    verificationStatus.innerHTML = `
+                        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                            <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                        </svg>
+                        <span class="text-green-400">Verified</span>
+                    `;
+                    playSuccessSound();
+                }, 2000);
+
+                // Transition to page 2
+                setTimeout(() => {
+                    page1.classList.add('hidden');
+                    page2.classList.remove('hidden');
+                    window.scrollTo(0, 0);
+                }, 3500);
+            });
+
+            // --- Page 2: Reward Selection Logic ---
+            const rewardAmounts = [400, 800, 1200, 2000, 4500];
+            const robuxCoinImg = 'https://logodix.com/logo/1613531.png';
+            rewardAmounts.forEach(amount => {
+                const card = document.createElement('div');
+                card.className = 'glowing-card p-6 rounded-xl flex flex-col items-center justify-between cursor-pointer';
+                card.innerHTML = `
+                    <img src="${robuxCoinImg}" alt="Robux Coin" class="w-16 h-16 mb-4" onerror="this.onerror=null; this.src='https://placehold.co/64/FFFFFF/000000?text=R$'; this.classList.add('p-2', 'bg-white', 'rounded-full');">
+                    <h3 class="text-3xl font-bold text-white">${amount.toLocaleString()}</h3>
+                    <p class="text-lg text-[#CFFF04] mb-6">Robux</p>
+                    <button class="btn-primary relative overflow-hidden w-full text-black font-bold text-sm px-4 py-2 rounded-lg confirm-reward-btn">
+                        Confirm this Reward
+                    </button>
+                `;
+                rewardsContainer.appendChild(card);
+            });
+            
+            // Event listener for confirm buttons
+            rewardsContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('confirm-reward-btn')) {
+                    playClickSound();
+                    taskModal.classList.remove('hidden');
+                }
+            });
+
+            // --- Modal Logic ---
+            closeModalBtn.addEventListener('click', () => {
+                playClickSound();
+                taskModal.classList.add('hidden');
+            });
+            taskModal.addEventListener('click', (e) => {
+                if (e.target === taskModal) {
+                    playClickSound();
+                    taskModal.classList.add('hidden');
+                }
+            });
+
+            // --- Social Proof Logic ---
+            const onlineCounter = document.getElementById('online-counter');
+            let userCount = 9823;
+            setInterval(() => {
+                const change = Math.floor(Math.random() * 10) - 4; // -4 to +5
+                userCount += change;
+                if (userCount < 9700) userCount = 9700;
+                onlineCounter.textContent = userCount.toLocaleString();
+            }, 2500);
+
+            const testimonials = [
+                { user: '@PixelKing', quote: 'I got 800 Robux in 3 minutes! So easy.' },
+                { user: '@BloxyBuilder', quote: 'Was skeptical at first but it actually works. Got my 4,500 Robux.' },
+                { user: '@EpicGamerGirl', quote: 'Finally a legit site! The tasks are super quick.' },
+                { user: '@NoobToPro', quote: 'Just claimed my second reward. This is awesome!' }
+            ];
+            const carouselContainer = document.getElementById('testimonials-carousel');
+            let currentTestimonial = 0;
+
+            function showTestimonial() {
+                const testimonial = testimonials[currentTestimonial];
+                carouselContainer.innerHTML = `
+                    <div class="absolute inset-0 flex flex-col items-center justify-center bg-[#1A1A1A] p-4 rounded-lg border border-[#6C00FF]/30 animate-fade-in">
+                         <img src="https://placehold.co/64x64/CFFF04/1A1A1A?text=${testimonial.user.charAt(1)}" alt="Avatar" class="w-16 h-16 rounded-full mb-3 border-2 border-[#CFFF04]">
+                        <p class="text-white italic">"${testimonial.quote}"</p>
+                        <p class="mt-2 font-bold text-[#CFFF04]">${testimonial.user}</p>
+                    </div>
+                `;
+            }
+
+            setInterval(() => {
+                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                showTestimonial();
+            }, 5000);
+            showTestimonial(); // Initial call
+
+            // --- Background Particles ---
+            const particlesContainer = document.getElementById('particles-container');
+            const particleCount = 30;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                const size = Math.random() * 5 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.animationDuration = `${Math.random() * 15 + 10}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                particle.style.opacity = Math.random();
+                particlesContainer.appendChild(particle);
+            }
+            
+            // --- Attach Ripple Effect to All Buttons ---
+            const buttons = document.querySelectorAll('.btn-primary, .confirm-reward-btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', createRipple);
+            });
         });
     </script>
-
 </body>
 </html>
 
