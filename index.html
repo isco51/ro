@@ -44,6 +44,12 @@
             transform: translateY(-3px);
             box-shadow: 0 0 25px #CFFF04, 0 0 10px #6C00FF;
         }
+        .btn-primary:disabled {
+            background-image: linear-gradient(to right, #555, #777);
+            box-shadow: none;
+            cursor: not-allowed;
+            transform: none;
+        }
 
         /* Ripple effect for buttons */
         .ripple {
@@ -63,54 +69,83 @@
         /* Glowing card effect */
         .glowing-card {
             background-color: rgba(42, 42, 42, 0.8);
-            border: 1px solid #6C00FF;
+            border: 2px solid #6C00FF;
             box-shadow: 0 0 15px rgba(108, 0, 255, 0.5);
             transition: all 0.3s ease;
+            width: 100%;
         }
         .glowing-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.02);
             box-shadow: 0 0 25px rgba(108, 0, 255, 0.8), 0 0 10px #CFFF04;
         }
+        
+        /* Style for the selected card */
+        .selected-card {
+            border-color: #CFFF04;
+            transform: scale(1.05) !important;
+            box-shadow: 0 0 30px #CFFF04, 0 0 15px #6C00FF !important;
+        }
 
-        /* Animated green checkmark */
-        .checkmark__circle {
-            stroke-dasharray: 166;
-            stroke-dashoffset: 166;
-            stroke-width: 2;
-            stroke-miterlimit: 10;
-            stroke: #7ac142;
+        /* --- NEW VERIFICATION ANIMATION --- */
+        .verification-icon {
+            width: 24px;
+            height: 24px;
+        }
+        .verification-icon svg {
+            overflow: visible;
+        }
+        .hexagon {
+            stroke: #6C00FF;
+            stroke-width: 1.5;
+            fill: transparent;
+            transition: all 0.3s ease-in-out;
+        }
+        .scanner-line {
+            stroke: #CFFF04;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            transform: translateX(-100%);
+            animation: scan 1.8s ease-in-out forwards;
+        }
+        .lock-body, .lock-shackle {
             fill: none;
-            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-        }
-        .checkmark {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            display: block;
-            stroke-width: 2;
-            stroke: #fff;
-            stroke-miterlimit: 10;
-            margin: 10% auto;
-            box-shadow: inset 0px 0px 0px #7ac142;
-            animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
-        }
-        .checkmark__check {
-            transform-origin: 50% 50%;
-            stroke-dasharray: 48;
-            stroke-dashoffset: 48;
-            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
-        }
-        @keyframes stroke {
-            100% { stroke-dashoffset: 0; }
-        }
-        @keyframes scale {
-            0%, 100% { transform: none; }
-            50% { transform: scale3d(1.1, 1.1, 1); }
-        }
-        @keyframes fill {
-            100% { box-shadow: inset 0px 0px 0px 30px #7ac142; }
+            stroke: #CFFF04;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            opacity: 0;
         }
 
+        /* Verified State */
+        .is-verified .hexagon {
+            fill: #CFFF04;
+            stroke: #CFFF04;
+        }
+        .is-verified .scanner-line {
+            display: none;
+        }
+        .is-verified .lock-body, .is-verified .lock-shackle {
+            opacity: 1;
+            stroke: #1A1A1A;
+            transition: opacity 0.2s 0.2s ease;
+        }
+        .is-verified .lock-shackle {
+            transform-origin: 9px 10px;
+            animation: unlock 0.4s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        .is-verified .verification-text {
+            color: #CFFF04;
+        }
+
+        @keyframes scan {
+            0% { transform: translateX(-100%); }
+            80%, 100% { transform: translateX(100%); }
+        }
+        @keyframes unlock {
+            0% { transform: rotate(0); }
+            100% { transform: rotate(-30deg) translateY(-1px); }
+        }
+        
         /* Subtle background particle animation */
         @keyframes animate-particles {
             0% { transform: translateY(0); opacity: 1; }
@@ -154,59 +189,75 @@
 
     <main class="relative z-10">
         <!-- PAGE 1: Roblox Identity Simulation -->
-        <section id="page-1" class="min-h-screen flex flex-col">
+        <section id="page-1" class="flex flex-col">
             <!-- Header Image -->
-            <div class="w-full h-64 md:h-96">
+            <div class="w-full h-64 md:h-80">
                 <img src="https://cdn.prod.website-files.com/67329a5ebeec6bec4738e42f/6765e8af62cf64412d6c3f32_1milgiveaway1920x1080.png" 
                      alt="Roblox 1 Million Robux Giveaway"
                      class="w-full h-full object-cover"
                      onerror="this.onerror=null; this.src='https://placehold.co/1920x1080/1A1A1A/F5F5F5?text=Roblox+Giveaway';">
             </div>
 
-            <!-- Username Input Section -->
-            <div id="username-input-section" class="flex-grow container mx-auto p-6 flex flex-col justify-center items-center text-center">
-                <h1 class="text-4xl md:text-6xl font-black uppercase tracking-wider mb-4">
-                    <span class="text-[#CFFF04]">Claim</span> Your Reward
-                </h1>
-                <p class="text-lg text-gray-300 mb-8 max-w-2xl">Enter your Roblox username below to connect your account and start earning free Robux instantly!</p>
-                <form id="username-form" class="w-full max-w-lg">
-                    <div class="flex flex-col sm:flex-row items-center gap-4">
-                        <input type="text" id="roblox-username" placeholder="Enter Your Roblox Username" class="w-full text-center text-lg px-4 py-3 rounded-lg bg-[#2A2A2A] border-2 border-[#6C00FF] focus:outline-none focus:ring-2 focus:ring-[#CFFF04] text-white transition-all duration-300">
-                        <button type="submit" class="btn-primary relative overflow-hidden w-full sm:w-auto text-black font-bold text-lg px-8 py-3 rounded-lg whitespace-nowrap">
-                            Submit
-                        </button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Simulated Profile Section (hidden by default) -->
-            <div id="simulated-profile-section" class="hidden flex-grow container mx-auto p-6 flex flex-col justify-center items-center text-center">
-                <div class="bg-[#2A2A2A] p-8 rounded-2xl shadow-2xl shadow-[#000]/50 border border-[#6C00FF]/50 w-full max-w-md">
-                    <img id="simulated-avatar" src="https://logodix.com/logo/1613531.png" alt="Roblox Avatar" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-[#CFFF04] bg-white/10 p-2" onerror="this.onerror=null; this.src='https://placehold.co/150/6C00FF/FFFFFF?text=R';">
-                    <h2 id="display-username" class="text-3xl font-bold text-white"></h2>
-                    <div class="my-4 text-gray-300">
-                        <div class="px-2">
-                            <p class="font-bold text-lg text-white" id="friends-count">182</p>
-                            <p class="text-sm">Friends</p>
+            <!-- Username Input & Profile Section -->
+            <div class="container mx-auto p-6 flex flex-col items-center text-center -mt-24 md:-mt-32 z-20">
+                <div id="username-input-section" class="w-full max-w-lg bg-[#1A1A1A]/80 backdrop-blur-md p-8 rounded-2xl shadow-2xl shadow-black/50 border border-purple-500/30">
+                    <h1 class="text-3xl md:text-4xl font-black uppercase tracking-wider mb-2">
+                        <span class="text-[#CFFF04]">Claim</span> Your Reward
+                    </h1>
+                    <p class="text-md text-gray-300 mb-6">Enter your Roblox username to connect.</p>
+                    <form id="username-form" class="w-full">
+                        <div class="flex flex-col items-center gap-4">
+                            <input type="text" id="roblox-username" placeholder="Enter Your Roblox Username" class="w-full text-center text-lg px-4 py-3 rounded-lg bg-[#2A2A2A] border-2 border-[#6C00FF] focus:outline-none focus:ring-2 focus:ring-[#CFFF04] text-white transition-all duration-300">
+                            <button type="submit" class="btn-primary relative overflow-hidden w-full text-black font-bold text-lg px-8 py-3 rounded-lg whitespace-nowrap">
+                                Submit
+                            </button>
                         </div>
-                    </div>
-                    <div id="verification-status" class="mt-4 flex items-center justify-center gap-2 text-2xl font-bold text-gray-400">
-                        <div class="w-6 h-6 border-2 border-gray-400 rounded-full animate-spin"></div>
-                        Connecting...
+                    </form>
+                </div>
+
+                <!-- NEW Simulated Profile Section (hidden by default) -->
+                <div id="simulated-profile-section" class="hidden w-full max-w-lg mt-6">
+                    <div class="bg-[#2A2A2A] p-4 rounded-2xl shadow-2xl shadow-[#000]/50 border border-[#6C00FF]/50 flex items-center justify-between">
+                         <div class="flex items-center gap-3">
+                            <img id="simulated-avatar" src="https://static.wikia.nocookie.net/roblox/images/5/58/Robux_Gold.svg/revision/latest/scale-to-width-down/100?cb=20221106211610" alt="Roblox Avatar" class="w-12 h-12 rounded-full bg-white/10 p-1" onerror="this.onerror=null; this.src='https://placehold.co/150/6C00FF/FFFFFF?text=R';">
+                            <h2 id="display-username" class="text-lg font-bold text-white"></h2>
+                         </div>
+                        <!-- NEW Verification Animation HTML -->
+                        <div id="verification-status" class="flex items-center justify-center gap-2 text-sm font-bold text-gray-400">
+                            <div class="verification-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <clipPath id="hexagon-clip">
+                                        <path d="M12 2 L22 7 L22 17 L12 22 L2 17 L2 7 Z" />
+                                    </clipPath>
+                                    <path class="hexagon" d="M12 2 L22 7 L22 17 L12 22 L2 17 L2 7 Z" />
+                                    <line class="scanner-line" x1="0" y1="12" x2="24" y2="12" clip-path="url(#hexagon-clip)" />
+                                    <g class="lock-icon">
+                                        <rect class="lock-body" x="7" y="11" width="10" height="7" rx="1" />
+                                        <path class="lock-shackle" d="M9 11 V 8 C 9 6.5 10.5 5 12 5 C 13.5 5 15 6.5 15 8 V 11" />
+                                    </g>
+                                </svg>
+                            </div>
+                            <span class="verification-text">Connecting...</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- PAGE 2: Robux Reward Selection (hidden by default) -->
-        <section id="page-2" class="hidden min-h-screen container mx-auto p-6 flex flex-col justify-center items-center text-center">
+        <section id="page-2" class="hidden container mx-auto p-6 flex flex-col justify-start items-center text-center py-16 md:py-24">
             <h1 class="text-4xl md:text-6xl font-black uppercase tracking-wider mb-2">
                 Choose Your <span class="text-[#CFFF04]">Robux</span> Reward
             </h1>
             <p class="text-lg text-gray-300 mb-12">Select one of the rewards below to proceed.</p>
-            <div id="rewards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 w-full">
+            
+            <div id="rewards" class="flex flex-col items-center gap-4 w-full max-w-md mx-auto">
                 <!-- Reward cards will be dynamically inserted here -->
             </div>
+            
+            <button id="confirm-selection-btn" disabled class="btn-primary relative overflow-hidden w-full max-w-md text-black font-bold text-lg px-8 py-4 rounded-lg mt-8">
+                Confirm Reward
+            </button>
         </section>
 
         <!-- Ad Slot 1: 320x50 Banner -->
@@ -282,7 +333,10 @@
             // --- Sound Engine ---
             const synth = new Tone.Synth().toDestination();
             const playClickSound = () => synth.triggerAttackRelease("C4", "8n");
-            const playSuccessSound = () => synth.triggerAttackRelease("G5", "8n", Tone.now() + 0.1);
+            const playSuccessSound = () => {
+                const successSynth = new Tone.PluckSynth().toDestination();
+                successSynth.triggerAttack("G4", Tone.now());
+            }
 
             // --- Page Elements ---
             const page1 = document.getElementById('page-1');
@@ -292,17 +346,19 @@
             const usernameInputSection = document.getElementById('username-input-section');
             const simulatedProfileSection = document.getElementById('simulated-profile-section');
             const verificationStatus = document.getElementById('verification-status');
+            const verificationText = document.querySelector('.verification-text');
             const displayUsername = document.getElementById('display-username');
-            const friendsCountEl = document.getElementById('friends-count');
             const simulatedAvatar = document.getElementById('simulated-avatar');
 
             const rewardsContainer = document.getElementById('rewards');
+            const confirmSelectionBtn = document.getElementById('confirm-selection-btn');
             const taskModal = document.getElementById('task-modal');
             const closeModalBtn = document.getElementById('close-modal');
 
             // --- Ripple Effect for Buttons ---
             function createRipple(event) {
                 const button = event.currentTarget;
+                if (button.disabled) return;
                 const circle = document.createElement("span");
                 const diameter = Math.max(button.clientWidth, button.clientHeight);
                 const radius = diameter / 2;
@@ -325,28 +381,19 @@
                 playClickSound();
                 const username = usernameInput.value.trim();
                 if (username === '') {
-                    // In a real app, you'd show a custom modal, not an alert.
                     console.error('Please enter a username.');
                     return;
                 }
 
-                // Start simulation
+                // Hide form and show profile simulation
                 usernameInputSection.classList.add('hidden');
                 simulatedProfileSection.classList.remove('hidden');
                 displayUsername.textContent = username;
                 
-                // Randomize stats
-                friendsCountEl.textContent = Math.floor(100 + Math.random() * 400);
-
                 // Simulate verification process
                 setTimeout(() => {
-                    verificationStatus.innerHTML = `
-                        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-                            <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-                        </svg>
-                        <span class="text-green-400">Verified</span>
-                    `;
+                    verificationStatus.classList.add('is-verified');
+                    verificationText.textContent = "Verified";
                     playSuccessSound();
                 }, 2000);
 
@@ -360,27 +407,41 @@
 
             // --- Page 2: Reward Selection Logic ---
             const rewardAmounts = [400, 800, 1200, 2000, 4500];
-            const robuxCoinImg = 'https://logodix.com/logo/1613531.png';
+            const robuxCoinImg = 'https://static.wikia.nocookie.net/roblox/images/5/58/Robux_Gold.svg/revision/latest/scale-to-width-down/100?cb=20221106211610';
+            
             rewardAmounts.forEach(amount => {
                 const card = document.createElement('div');
-                card.className = 'glowing-card p-6 rounded-xl flex flex-col items-center justify-between cursor-pointer';
+                card.className = 'glowing-card p-4 rounded-xl flex items-center justify-between cursor-pointer';
                 card.innerHTML = `
-                    <img src="${robuxCoinImg}" alt="Robux Coin" class="w-16 h-16 mb-4" onerror="this.onerror=null; this.src='https://placehold.co/64/FFFFFF/000000?text=R$'; this.classList.add('p-2', 'bg-white', 'rounded-full');">
-                    <h3 class="text-3xl font-bold text-white">${amount.toLocaleString()}</h3>
-                    <p class="text-lg text-[#CFFF04] mb-6">Robux</p>
-                    <button class="btn-primary relative overflow-hidden w-full text-black font-bold text-sm px-4 py-2 rounded-lg confirm-reward-btn">
-                        Confirm this Reward
-                    </button>
+                    <div class="flex items-center gap-4 pointer-events-none">
+                        <img src="${robuxCoinImg}" alt="Robux Coin" class="w-12 h-12" onerror="this.onerror=null; this.src='https://placehold.co/64/FFFFFF/000000?text=R$';">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white text-left">${amount.toLocaleString()}</h3>
+                            <p class="text-md text-[#CFFF04] text-left">Robux</p>
+                        </div>
+                    </div>
                 `;
                 rewardsContainer.appendChild(card);
             });
             
-            // Event listener for confirm buttons
             rewardsContainer.addEventListener('click', (e) => {
-                if (e.target.classList.contains('confirm-reward-btn')) {
-                    playClickSound();
-                    taskModal.classList.remove('hidden');
-                }
+                const selectedCard = e.target.closest('.glowing-card');
+                if (!selectedCard) return;
+
+                playClickSound();
+
+                const allCards = rewardsContainer.querySelectorAll('.glowing-card');
+                allCards.forEach(card => card.classList.remove('selected-card'));
+
+                selectedCard.classList.add('selected-card');
+
+                confirmSelectionBtn.disabled = false;
+            });
+
+            confirmSelectionBtn.addEventListener('click', () => {
+                if (confirmSelectionBtn.disabled) return;
+                playClickSound();
+                taskModal.classList.remove('hidden');
             });
 
             // --- Modal Logic ---
@@ -399,7 +460,7 @@
             const onlineCounter = document.getElementById('online-counter');
             let userCount = 9823;
             setInterval(() => {
-                const change = Math.floor(Math.random() * 10) - 4; // -4 to +5
+                const change = Math.floor(Math.random() * 10) - 4;
                 userCount += change;
                 if (userCount < 9700) userCount = 9700;
                 onlineCounter.textContent = userCount.toLocaleString();
@@ -449,7 +510,7 @@
             }
             
             // --- Attach Ripple Effect to All Buttons ---
-            const buttons = document.querySelectorAll('.btn-primary, .confirm-reward-btn');
+            const buttons = document.querySelectorAll('.btn-primary');
             buttons.forEach(button => {
                 button.addEventListener('click', createRipple);
             });
