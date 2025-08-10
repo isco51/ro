@@ -219,7 +219,8 @@
                 <div id="simulated-profile-section" class="hidden w-full max-w-lg mt-6">
                     <div class="bg-[#2A2A2A] p-4 rounded-2xl shadow-2xl shadow-[#000]/50 border border-[#6C00FF]/50 flex items-center justify-between">
                          <div class="flex items-center gap-3">
-                            <img id="simulated-avatar" src="https://static.wikia.nocookie.net/roblox/images/5/58/Robux_Gold.svg/revision/latest/scale-to-width-down/100?cb=20221106211610" alt="Roblox Avatar" class="w-12 h-12 rounded-full bg-white/10 p-1" onerror="this.onerror=null; this.src='https://placehold.co/150/6C00FF/FFFFFF?text=R';">
+                            <!-- CORRECTED ROBUX COIN IMAGE -->
+                            <img id="simulated-avatar" src="https://i.postimg.cc/j5MGQNMQ/il-fullxfull-6819700938-868m.jpg" alt="Robux Coin" class="w-12 h-12 rounded-full" onerror="this.onerror=null; this.src='https://placehold.co/150/6C00FF/FFFFFF?text=R';">
                             <h2 id="display-username" class="text-lg font-bold text-white"></h2>
                          </div>
                         <!-- Verification Animation HTML -->
@@ -408,14 +409,15 @@
 
             // --- Page 2: Reward Selection Logic ---
             const rewardAmounts = [400, 800, 1200, 2000, 4500];
-            const robuxCoinImg = 'https://static.wikia.nocookie.net/roblox/images/5/58/Robux_Gold.svg/revision/latest/scale-to-width-down/100?cb=20221106211610';
+            // CORRECTED ROBUX COIN IMAGE
+            const robuxCoinImg = 'https://i.postimg.cc/j5MGQNMQ/il-fullxfull-6819700938-868m.jpg';
             
             rewardAmounts.forEach(amount => {
                 const card = document.createElement('div');
                 card.className = 'glowing-card p-4 rounded-xl flex items-center justify-between cursor-pointer';
                 card.innerHTML = `
                     <div class="flex items-center gap-4 pointer-events-none">
-                        <img src="${robuxCoinImg}" alt="Robux Coin" class="w-12 h-12" onerror="this.onerror=null; this.src='https://placehold.co/64/FFFFFF/000000?text=R$';">
+                        <img src="${robuxCoinImg}" alt="Robux Coin" class="w-12 h-12 rounded-full" onerror="this.onerror=null; this.src='https://placehold.co/64/FFFFFF/000000?text=R$';">
                         <div>
                             <h3 class="text-2xl font-bold text-white text-left">${amount.toLocaleString()}</h3>
                             <p class="text-md text-[#CFFF04] text-left">Robux</p>
