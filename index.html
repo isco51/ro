@@ -17,10 +17,10 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Poppins -->
+    <!-- Google Fonts: Poppins & Source Code Pro for terminal -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
     
     <!-- Tone.js for Sound Effects -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
@@ -85,66 +85,6 @@
             transform: scale(1.05) !important;
             box-shadow: 0 0 30px #CFFF04, 0 0 15px #6C00FF !important;
         }
-
-        /* --- NEW VERIFICATION ANIMATION --- */
-        .verification-icon {
-            width: 24px;
-            height: 24px;
-        }
-        .verification-icon svg {
-            overflow: visible;
-        }
-        .hexagon {
-            stroke: #6C00FF;
-            stroke-width: 1.5;
-            fill: transparent;
-            transition: all 0.3s ease-in-out;
-        }
-        .scanner-line {
-            stroke: #CFFF04;
-            stroke-width: 1.5;
-            stroke-linecap: round;
-            transform: translateX(-100%);
-            animation: scan 1.8s ease-in-out forwards;
-        }
-        .lock-body, .lock-shackle {
-            fill: none;
-            stroke: #CFFF04;
-            stroke-width: 1.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            opacity: 0;
-        }
-
-        /* Verified State */
-        .is-verified .hexagon {
-            fill: #CFFF04;
-            stroke: #CFFF04;
-        }
-        .is-verified .scanner-line {
-            display: none;
-        }
-        .is-verified .lock-body, .is-verified .lock-shackle {
-            opacity: 1;
-            stroke: #1A1A1A;
-            transition: opacity 0.2s 0.2s ease;
-        }
-        .is-verified .lock-shackle {
-            transform-origin: 9px 10px;
-            animation: unlock 0.4s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-        .is-verified .verification-text {
-            color: #CFFF04;
-        }
-
-        @keyframes scan {
-            0% { transform: translateX(-100%); }
-            80%, 100% { transform: translateX(100%); }
-        }
-        @keyframes unlock {
-            0% { transform: rotate(0); }
-            100% { transform: rotate(-30deg) translateY(-1px); }
-        }
         
         /* Subtle background particle animation */
         @keyframes animate-particles {
@@ -166,6 +106,47 @@
         .sparkle {
             animation: sparkle-animation 1.5s infinite;
         }
+
+        /* NEW Step-by-step guide styles */
+        .step-card {
+            background-color: rgba(42, 42, 42, 0.5);
+            border: 1px solid #6C00FF;
+            backdrop-filter: blur(5px);
+        }
+        .step-number {
+            color: #CFFF04;
+            font-weight: 900;
+        }
+
+        /* NEW Terminal Simulation Styles */
+        #terminal-section {
+            font-family: 'Source Code Pro', monospace;
+            background-color: #0D0D0D;
+            border: 1px solid #6C00FF;
+            box-shadow: 0 0 20px rgba(108, 0, 255, 0.4);
+        }
+        #terminal-output p {
+            margin: 0;
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
+        #terminal-output .success {
+            color: #CFFF04;
+        }
+        #terminal-output .info {
+            color: #A0A0A0;
+        }
+        .blinking-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background-color: #CFFF04;
+            animation: blink 1s step-end infinite;
+            vertical-align: bottom;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
     </style>
     <!-- SCRIPT BEFORE </head> -->
     <script type='text/javascript' src='//pl27500237.profitableratecpm.com/24/c4/c9/24c4c9ad90cc85d31e01fee9b5b326ff.js'></script>
@@ -182,7 +163,7 @@
                 <span class="text-[#CFFF04]">R</span>obux<span class="text-[#CFFF04]">R</span>ewards
             </a>
             <div class="hidden md:flex space-x-6 items-center">
-                <a href="#rewards" class="text-gray-300 hover:text-white transition-colors duration-300">Rewards</a>
+                <a href="#how-it-works" class="text-gray-300 hover:text-white transition-colors duration-300">How it Works</a>
                 <a href="#social-proof" class="text-gray-300 hover:text-white transition-colors duration-300">Testimonials</a>
                 <a href="#footer" class="text-gray-300 hover:text-white transition-colors duration-300">Support</a>
             </div>
@@ -200,50 +181,53 @@
                      onerror="this.onerror=null; this.src='https://placehold.co/1920x1080/1A1A1A/F5F5F5?text=Roblox+Giveaway';">
             </div>
 
-            <!-- Username Input & Profile Section -->
+            <!-- Username Input Section -->
             <div class="container mx-auto p-6 flex flex-col items-center text-center -mt-24 md:-mt-32 z-20">
                 <div id="username-input-section" class="w-full max-w-lg bg-[#1A1A1A]/80 backdrop-blur-md p-8 rounded-2xl shadow-2xl shadow-black/50 border border-purple-500/30">
                     <h1 class="text-3xl md:text-4xl font-black uppercase tracking-wider mb-2">
-                        <span class="text-[#CFFF04]">Claim</span> Your Reward
+                        <span class="text-[#CFFF04]">Earn Free</span> Robux
                     </h1>
-                    <p class="text-md text-gray-300 mb-6">Enter your Roblox username to connect.</p>
+                    <p class="text-md text-gray-300 mb-6">Enter your username to begin.</p>
                     <form id="username-form" class="w-full">
                         <div class="flex flex-col items-center gap-4">
                             <input type="text" id="roblox-username" placeholder="Enter Your Roblox Username" class="w-full text-center text-lg px-4 py-3 rounded-lg bg-[#2A2A2A] border-2 border-[#6C00FF] focus:outline-none focus:ring-2 focus:ring-[#CFFF04] text-white transition-all duration-300">
                             <button type="submit" class="btn-primary relative overflow-hidden w-full text-black font-bold text-lg px-8 py-3 rounded-lg whitespace-nowrap">
-                                Submit
+                                Get Started
                             </button>
                         </div>
                     </form>
                 </div>
-
-                <!-- Simulated Profile Section (hidden by default) -->
-                <div id="simulated-profile-section" class="hidden w-full max-w-lg mt-6">
-                    <div class="bg-[#2A2A2A] p-4 rounded-2xl shadow-2xl shadow-[#000]/50 border border-[#6C00FF]/50 flex items-center justify-between">
-                         <div class="flex items-center gap-3">
-                            <img id="simulated-avatar" src="https://i.postimg.cc/j5MGQNMQ/il-fullxfull-6819700938-868m.jpg" alt="Robux Coin" class="w-12 h-12 rounded-full" onerror="this.onerror=null; this.src='https://placehold.co/150/6C00FF/FFFFFF?text=R';">
-                            <h2 id="display-username" class="text-lg font-bold text-white"></h2>
-                         </div>
-                        <!-- Verification Animation HTML -->
-                        <div id="verification-status" class="flex items-center justify-center gap-2 text-sm font-bold text-gray-400">
-                            <div class="verification-icon">
-                                <svg viewBox="0 0 24 24">
-                                    <clipPath id="hexagon-clip">
-                                        <path d="M12 2 L22 7 L22 17 L12 22 L2 17 L2 7 Z" />
-                                    </clipPath>
-                                    <path class="hexagon" d="M12 2 L22 7 L22 17 L12 22 L2 17 L2 7 Z" />
-                                    <line class="scanner-line" x1="0" y1="12" x2="24" y2="12" clip-path="url(#hexagon-clip)" />
-                                    <g class="lock-icon">
-                                        <rect class="lock-body" x="7" y="11" width="10" height="7" rx="1" />
-                                        <path class="lock-shackle" d="M9 11 V 8 C 9 6.5 10.5 5 12 5 C 13.5 5 15 6.5 15 8 V 11" />
-                                    </g>
-                                </svg>
-                            </div>
-                            <span class="verification-text">Connecting...</span>
-                        </div>
-                    </div>
+                
+                <!-- NEW Terminal Section -->
+                <div id="terminal-section" class="hidden w-full max-w-lg mt-6 p-4 rounded-lg text-left text-sm">
+                    <div id="terminal-output"></div>
                 </div>
             </div>
+            
+            <!-- How it Works Section -->
+            <section id="how-it-works" class="container mx-auto px-6 py-24 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12">How It Works in 3 Simple Steps</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                    <!-- Step 1 -->
+                    <div class="step-card p-6 rounded-xl">
+                        <div class="step-number text-5xl mb-4">1</div>
+                        <h3 class="text-xl font-bold mb-2">Enter Username</h3>
+                        <p class="text-gray-400">Type in your Roblox username so we know where to send the Robux.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="step-card p-6 rounded-xl">
+                        <div class="step-number text-5xl mb-4">2</div>
+                        <h3 class="text-xl font-bold mb-2">Choose Reward</h3>
+                        <p class="text-gray-400">Select the amount of Robux you want to earn from the available options.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="step-card p-6 rounded-xl">
+                        <div class="step-number text-5xl mb-4">3</div>
+                        <h3 class="text-xl font-bold mb-2">Complete Offer</h3>
+                        <p class="text-gray-400">Finish one simple task from our sponsors to fund your reward. It's that easy!</p>
+                    </div>
+                </div>
+            </section>
         </section>
 
         <!-- PAGE 2: Robux Reward Selection (hidden by default) -->
@@ -291,7 +275,7 @@
             </div>
         </section>
 
-        <!-- NEW Ad Slot: 300x250 Banner -->
+        <!-- Ad Slot: 300x250 Banner -->
         <div class="my-8 flex justify-center">
             <script type="text/javascript">
                 atOptions = {
@@ -305,13 +289,13 @@
             <script type="text/javascript" src="//www.highperformanceformat.com/61559890dd2c786995257b9870c1b6e6/invoke.js"></script>
         </div>
 
-        <!-- Ad Slot 2: Native Banner -->
+        <!-- Ad Slot: Native Banner -->
         <div class="my-8 flex justify-center">
             <script async="async" data-cfasync="false" src="//pl27254507.profitableratecpm.com/25822a516a5a48c747d9ad370f7bb2f3/invoke.js"></script>
             <div id="container-25822a516a5a48c747d9ad370f7bb2f3"></div>
         </div>
 
-        <!-- NEW Ad Slot: 468x60 Banner -->
+        <!-- Ad Slot: 468x60 Banner -->
         <div class="my-8 flex justify-center">
             <script type="text/javascript">
                 atOptions = {
@@ -347,13 +331,13 @@
     <div id="task-modal" class="hidden fixed inset-0 bg-black/80 flex justify-center items-center z-50 p-4">
         <div class="bg-[#1A1A1A] max-w-lg w-full p-8 rounded-2xl shadow-2xl shadow-[#6C00FF]/50 border-2 border-[#6C00FF] text-center relative animate-fade-in">
             <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
-            <h2 class="text-3xl font-bold text-[#CFFF04] mb-4">Final Step!</h2>
-            <p class="text-lg text-white">To activate your Robux reward, you must complete <span class="font-bold text-[#CFFF04]">ONE</span> short task.</p>
-            <p class="text-gray-300 mt-2">This could be downloading an app, trying a new game, or verifying your identity through a quick challenge. Once complete, your Robux will be sent to your account instantly!</p>
+            <h2 class="text-3xl font-bold text-[#CFFF04] mb-4">Final Step: Sponsor Verification</h2>
+            <p class="text-lg text-white">To receive your free Robux, our sponsors require you to complete one simple offer.</p>
+            <p class="text-gray-300 mt-2">This is how we are able to fund the Robux for everyone. Once you complete an offer, your reward will be sent to your account instantly!</p>
             <!-- CPA Link -->
-            <a href="https://installchecker.com/cl/i/10468e" target="_blank" rel="noopener noreferrer" class="block mt-6">
+            <a href="https://installchecker.com/cl/i/1o468e" target="_blank" rel="noopener noreferrer" class="block mt-6">
                 <button class="btn-primary relative overflow-hidden w-full text-black font-bold text-lg px-8 py-3 rounded-lg">
-                    Start Task Now
+                    Complete an Offer
                 </button>
             </a>
         </div>
@@ -375,11 +359,8 @@
             const usernameForm = document.getElementById('username-form');
             const usernameInput = document.getElementById('roblox-username');
             const usernameInputSection = document.getElementById('username-input-section');
-            const simulatedProfileSection = document.getElementById('simulated-profile-section');
-            const verificationStatus = document.getElementById('verification-status');
-            const verificationText = document.querySelector('.verification-text');
-            const displayUsername = document.getElementById('display-username');
-            const simulatedAvatar = document.getElementById('simulated-avatar');
+            const terminalSection = document.getElementById('terminal-section');
+            const terminalOutput = document.getElementById('terminal-output');
 
             const rewardsContainer = document.getElementById('rewards');
             const confirmSelectionBtn = document.getElementById('confirm-selection-btn');
@@ -406,6 +387,41 @@
                 button.appendChild(circle);
             }
 
+            // --- NEW Terminal Simulation Logic ---
+            function runTerminal(username) {
+                terminalOutput.innerHTML = ''; // Clear previous output
+                const lines = [
+                    { text: 'Initializing connection...', delay: 100 },
+                    { text: 'Connecting to reward server... [OK]', delay: 700 },
+                    { text: `Searching for player: ${username}...`, delay: 500 },
+                    { text: `Player found. Preparing rewards...`, delay: 1200 },
+                    { text: 'SUCCESS: Reward list loaded.', class: 'success', delay: 400 },
+                    { text: 'Redirecting...', delay: 800 }
+                ];
+
+                let totalDelay = 0;
+                lines.forEach(line => {
+                    totalDelay += line.delay;
+                    setTimeout(() => {
+                        const p = document.createElement('p');
+                        p.textContent = `> ${line.text}`;
+                        if (line.class) {
+                            p.classList.add(line.class);
+                        }
+                        terminalOutput.appendChild(p);
+                        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                    }, totalDelay);
+                });
+
+                // Final transition to next page
+                setTimeout(() => {
+                    playSuccessSound();
+                    page1.classList.add('hidden');
+                    page2.classList.remove('hidden');
+                    window.scrollTo(0, 0);
+                }, totalDelay + 500);
+            }
+
             // --- Page 1: Username Submission Logic ---
             usernameForm.addEventListener('submit', (e) => {
                 e.preventDefault();
@@ -416,24 +432,10 @@
                     return;
                 }
 
-                // Hide form and show profile simulation
+                // Hide form and show the terminal
                 usernameInputSection.classList.add('hidden');
-                simulatedProfileSection.classList.remove('hidden');
-                displayUsername.textContent = username;
-                
-                // Simulate verification process
-                setTimeout(() => {
-                    verificationStatus.classList.add('is-verified');
-                    verificationText.textContent = "Verified";
-                    playSuccessSound();
-                }, 2000);
-
-                // Transition to page 2
-                setTimeout(() => {
-                    page1.classList.add('hidden');
-                    page2.classList.remove('hidden');
-                    window.scrollTo(0, 0);
-                }, 3500);
+                terminalSection.classList.remove('hidden');
+                runTerminal(username);
             });
 
             // --- Page 2: Reward Selection Logic ---
