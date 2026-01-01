@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roblox Rewards - Get Your Robux!</title>
     
-    <!-- تحسين محركات البحث والكلمات المفتاحية -->
-    <meta name="description" content="Learn how to earn Robux safely. Explore digital assets and gaming economy rewards.">
-    <meta name="keywords" content="Robux rewards, gaming economy, digital assets, online rewards">
+    <!-- SEO AND META TAGS -->
+    <meta name="description" content="Learn how to earn Robux and understand the value of digital assets in the gaming economy.">
+    <meta name="keywords" content="Robux rewards, gaming economy, digital assets">
     
     <meta property="og:title" content="Roblox Rewards - Get Your Free Robux!">
     <meta property="og:description" content="The #1 place for Roblox fans to earn free Robux. Fast, safe, and easy.">
@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
     
-    <!-- Tone.js للتحكم بالصوت -->
+    <!-- Tone.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
 
     <style>
@@ -37,6 +37,8 @@
             background-image: linear-gradient(to right, #6C00FF, #CFFF04);
             transition: all 0.3s ease;
             box-shadow: 0 0 15px #CFFF04, 0 0 5px #6C00FF;
+            position: relative;
+            overflow: hidden;
         }
         .btn-primary:hover {
             transform: translateY(-3px);
@@ -55,6 +57,7 @@
             background: rgba(255, 255, 255, 0.6);
             transform: scale(0);
             animation: ripple-animation 0.6s linear;
+            pointer-events: none;
         }
         @keyframes ripple-animation {
             to { transform: scale(4); opacity: 0; }
@@ -77,67 +80,62 @@
             transform: scale(1.05) !important;
             box-shadow: 0 0 30px #CFFF04, 0 0 15px #6C00FF !important;
         }
-        
-        @keyframes animate-particles {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-100vh); opacity: 0; }
-        }
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: #6C00FF;
-            animation: animate-particles linear infinite;
-        }
-        
-        .step-card {
-            background-color: rgba(42, 42, 42, 0.5);
-            border: 1px solid #6C00FF;
-            backdrop-filter: blur(5px);
-        }
 
         #terminal-section {
             font-family: 'Source Code Pro', monospace;
             background-color: #0D0D0D;
             border: 1px solid #6C00FF;
+            box-shadow: 0 0 20px rgba(108, 0, 255, 0.4);
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: #6C00FF;
+            animation: animate-particles linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        @keyframes animate-particles {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
         }
     </style>
 </head>
 <body class="relative">
 
-    <div id="particles-container" class="absolute top-0 left-0 w-full h-full overflow-hidden z-0"></div>
+    <div id="particles-container" class="absolute top-0 left-0 w-full h-full overflow-hidden"></div>
 
-    <!-- القائمة العلوية -->
-    <header class="sticky top-0 bg-[#1A1A1A]/80 backdrop-blur-sm shadow-lg shadow-[#6C00FF]/20 z-50">
+    <header class="sticky top-0 bg-[#1A1A1A]/80 backdrop-blur-sm shadow-lg z-50">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-white">
                 <span class="text-[#CFFF04]">R</span>obux<span class="text-[#CFFF04]">R</span>ewards
             </a>
             <div class="hidden md:flex space-x-6 items-center">
-                <a href="#how-it-works" class="text-gray-300 hover:text-white transition-colors">How it Works</a>
-                <a href="#social-proof" class="text-gray-300 hover:text-white transition-colors">Testimonials</a>
+                <a href="#how-it-works" class="text-gray-300 hover:text-white">How it Works</a>
+                <a href="#social-proof" class="text-gray-300 hover:text-white">Testimonials</a>
             </div>
         </nav>
     </header>
 
     <main class="relative z-10">
-        <!-- الصفحة الأولى: اسم المستخدم -->
+        <!-- PAGE 1: Username -->
         <section id="page-1" class="flex flex-col">
             <div class="w-full h-64 md:h-80">
                 <img src="https://cdn.prod.website-files.com/67329a5ebeec6bec4738e42f/6765e8af62cf64412d6c3f32_1milgiveaway1920x1080.png" 
-                     alt="[صورة عرض هدايا روبوكس]"
-                     class="w-full h-full object-cover">
+                     alt="Roblox Giveaway" class="w-full h-full object-cover">
             </div>
 
-            <div class="container mx-auto p-6 flex flex-col items-center text-center -mt-24 md:-mt-32 z-20">
-                <div id="username-input-section" class="w-full max-w-lg bg-[#1A1A1A]/80 backdrop-blur-md p-8 rounded-2xl shadow-2xl border border-purple-500/30">
-                    <h1 class="text-3xl md:text-4xl font-black uppercase tracking-wider mb-2">
+            <div class="container mx-auto p-6 flex flex-col items-center text-center -mt-24 md:-mt-32">
+                <div id="username-input-section" class="w-full max-w-lg bg-[#1A1A1A]/90 backdrop-blur-md p-8 rounded-2xl shadow-2xl border border-purple-500/30">
+                    <h1 class="text-3xl md:text-4xl font-black uppercase mb-2">
                         <span class="text-[#CFFF04]">Earn Free</span> Robux
                     </h1>
                     <p class="text-md text-gray-300 mb-6">Enter your username to begin.</p>
                     <form id="username-form" class="w-full">
                         <div class="flex flex-col items-center gap-4">
-                            <input type="text" id="roblox-username" required placeholder="Enter Your Roblox Username" class="w-full text-center text-lg px-4 py-3 rounded-lg bg-[#2A2A2A] border-2 border-[#6C00FF] focus:outline-none focus:ring-2 focus:ring-[#CFFF04] text-white">
-                            <button type="submit" class="btn-primary relative overflow-hidden w-full text-black font-bold text-lg px-8 py-3 rounded-lg">
+                            <input type="text" id="roblox-username" required placeholder="Enter Your Roblox Username" class="w-full text-center text-lg px-4 py-3 rounded-lg bg-[#2A2A2A] border-2 border-[#6C00FF] focus:outline-none focus:border-[#CFFF04] text-white">
+                            <button type="submit" class="btn-primary w-full text-black font-bold text-lg px-8 py-3 rounded-lg">
                                 Get Started
                             </button>
                         </div>
@@ -150,50 +148,50 @@
             </div>
         </section>
 
-        <!-- الصفحة الثانية: اختيار المكافأة -->
-        <section id="page-2" class="hidden container mx-auto p-6 flex flex-col justify-start items-center text-center py-16">
-            <h1 class="text-4xl md:text-6xl font-black uppercase mb-12">
+        <!-- PAGE 2: Selection -->
+        <section id="page-2" class="hidden container mx-auto p-6 flex flex-col items-center text-center py-16">
+            <h1 class="text-4xl font-black uppercase mb-12">
                 Choose Your <span class="text-[#CFFF04]">Robux</span> Reward
             </h1>
+            
             <div id="rewards" class="flex flex-col items-center gap-4 w-full max-w-md mx-auto">
-                <!-- المكافآت تضاف هنا بواسطة JS -->
+                <!-- Rewards will be injected here with images -->
             </div>
+            
             <button id="confirm-selection-btn" disabled class="btn-primary w-full max-w-md text-black font-bold text-lg px-8 py-4 rounded-lg mt-8">
                 Confirm Reward
             </button>
         </section>
 
-        <!-- التقييمات -->
-        <section id="social-proof" class="py-16 bg-[#2A2A2A]/50 mt-12">
+        <!-- Social Proof -->
+        <section id="social-proof" class="py-16 bg-[#2A2A2A]/30 mt-12">
             <div class="container mx-auto px-6 text-center">
-                <h3 class="text-2xl font-bold mb-8">Recent Rewards Claimed</h3>
-                <div id="testimonials-carousel" class="relative w-full max-w-xl mx-auto h-24 flex items-center justify-center">
-                    <!-- التقييمات تظهر هنا -->
+                <h3 class="text-xl font-bold mb-4">Recent Winners</h3>
+                <div id="testimonials-carousel" class="h-16 flex items-center justify-center italic text-[#CFFF04]">
+                    <!-- Testimonial content -->
                 </div>
             </div>
         </section>
     </main>
     
-    <footer class="bg-black/80 py-8 mt-12">
-        <div class="container mx-auto px-6 text-center text-gray-400">
-            <p class="text-sm">&copy; 2024 RobuxRewards. Not affiliated with Roblox Corporation.</p>
-        </div>
+    <footer class="bg-black/50 py-8 text-center text-gray-500 text-xs">
+        &copy; 2024 RobuxRewards. Not affiliated with Roblox Corporation.
     </footer>
 
-    <!-- نافذة التحقق (التي تحتوي على الرابط الجديد) -->
+    <!-- Verification Modal -->
     <div id="task-modal" class="hidden fixed inset-0 bg-black/90 flex justify-center items-center z-[100] p-4">
-        <div class="bg-[#1A1A1A] max-w-lg w-full p-8 rounded-2xl border-2 border-[#CFFF04] text-center shadow-[0_0_50px_rgba(207,255,4,0.3)]">
+        <div class="bg-[#1A1A1A] max-w-lg w-full p-8 rounded-2xl border-2 border-[#CFFF04] text-center">
             <h2 class="text-3xl font-bold text-[#CFFF04] mb-4">Final Step: Verification</h2>
-            <p class="text-lg text-white mb-6">To prevent bot abuse, please complete one quick offer from our sponsor to release your Robux.</p>
+            <p class="text-white mb-6">To receive your Robux, please complete one quick offer from our sponsor to verify you are a human.</p>
             
-            <!-- الرابط الجديد المحدث -->
+            <!-- NEW CPA LINK -->
             <a href="https://applocked.space/cl/i/1o468e" target="_blank" rel="noopener noreferrer" class="block">
-                <button class="btn-primary w-full text-black font-bold text-xl px-8 py-4 rounded-lg animate-bounce">
+                <button class="btn-primary w-full text-black font-bold text-xl px-8 py-4 rounded-lg">
                     VERIFY NOW
                 </button>
             </a>
             
-            <p class="text-xs text-gray-500 mt-6">Rewards are usually delivered within 5-10 minutes after verification.</p>
+            <p class="text-xs text-gray-500 mt-6 italic">Reward will be sent to your account immediately after verification.</p>
         </div>
     </div>
 
@@ -201,93 +199,83 @@
         document.addEventListener('DOMContentLoaded', () => {
             const synth = new Tone.Synth().toDestination();
             
-            // تهيئة الجزيئات الخلفية
-            const particlesContainer = document.getElementById('particles-container');
-            for (let i = 0; i < 30; i++) {
-                const p = document.createElement('div');
-                p.className = 'particle';
-                const size = Math.random() * 4 + 1;
-                p.style.width = p.style.height = `${size}px`;
-                p.style.left = `${Math.random() * 100}%`;
-                p.style.top = `${Math.random() * 100}%`;
-                p.style.animationDuration = `${Math.random() * 10 + 10}s`;
-                particlesContainer.appendChild(p);
-            }
-
-            // منطق تشغيل الواجهة
-            const usernameForm = document.getElementById('username-form');
             const page1 = document.getElementById('page-1');
             const page2 = document.getElementById('page-2');
-            const terminal = document.getElementById('terminal-section');
+            const usernameForm = document.getElementById('username-form');
             const terminalOutput = document.getElementById('terminal-output');
+            const rewardsContainer = document.getElementById('rewards');
+            const confirmBtn = document.getElementById('confirm-selection-btn');
+            const modal = document.getElementById('task-modal');
 
-            usernameForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                synth.triggerAttackRelease("C4", "8n");
-                document.getElementById('username-input-section').classList.add('hidden');
-                terminal.classList.remove('hidden');
-                
-                const steps = [
-                    "Checking connection to Roblox API...",
-                    "Locating database entry for user...",
-                    "Status: SUCCESS. User validated.",
-                    "Preparing reward allocation packages...",
-                    "Redirecting to selection menu..."
-                ];
+            // --- Reward Injection with Images ---
+            const rewardData = [
+                { amount: 400, img: 'https://i.postimg.cc/j5MGQNMQ/il-fullxfull-6819700938-868m.jpg' },
+                { amount: 800, img: 'https://i.postimg.cc/j5MGQNMQ/il-fullxfull-6819700938-868m.jpg' },
+                { amount: 1700, img: 'https://i.postimg.cc/j5MGQNMQ/il-fullxfull-6819700938-868m.jpg' },
+                { amount: 4500, img: 'https://i.postimg.cc/j5MGQNMQ/il-fullxfull-6819700938-868m.jpg' },
+                { amount: 10000, img: 'https://i.postimg.cc/j5MGQNMQ/il-fullxfull-6819700938-868m.jpg' }
+            ];
 
-                steps.forEach((text, i) => {
-                    setTimeout(() => {
-                        const p = document.createElement('p');
-                        p.textContent = `> ${text}`;
-                        p.className = i === 2 ? 'text-[#CFFF04]' : 'text-gray-400';
-                        terminalOutput.appendChild(p);
-                        if(i === steps.length - 1) {
-                            setTimeout(() => {
-                                page1.classList.add('hidden');
-                                page2.classList.remove('hidden');
-                            }, 1000);
-                        }
-                    }, i * 800);
-                });
-            });
-
-            // توليد بطاقات المكافآت
-            const amounts = [400, 800, 1700, 4500, 10000];
-            const rewardsDiv = document.getElementById('rewards');
-            amounts.forEach(amount => {
+            rewardData.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'glowing-card p-4 rounded-xl flex items-center justify-between cursor-pointer';
                 card.innerHTML = `
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 bg-[#CFFF04] rounded-full flex items-center justify-center text-black font-bold">R$</div>
-                        <span class="text-2xl font-bold">${amount.toLocaleString()} Robux</span>
+                    <div class="flex items-center gap-4 pointer-events-none">
+                        <img src="${item.img}" alt="Robux" class="w-12 h-12 rounded-full object-cover border border-[#CFFF04]">
+                        <div class="text-left">
+                            <span class="text-2xl font-bold block text-white">${item.amount.toLocaleString()}</span>
+                            <span class="text-xs text-[#CFFF04] uppercase font-bold">Robux Reward</span>
+                        </div>
                     </div>
                 `;
                 card.onclick = () => {
                     synth.triggerAttackRelease("E4", "8n");
                     document.querySelectorAll('.glowing-card').forEach(c => c.classList.remove('selected-card'));
                     card.classList.add('selected-card');
-                    document.getElementById('confirm-selection-btn').disabled = false;
+                    confirmBtn.disabled = false;
                 };
-                rewardsDiv.appendChild(card);
+                rewardsContainer.appendChild(card);
             });
 
-            document.getElementById('confirm-selection-btn').onclick = () => {
-                synth.triggerAttackRelease("G4", "8n");
-                document.getElementById('task-modal').classList.remove('hidden');
+            usernameForm.onsubmit = (e) => {
+                e.preventDefault();
+                synth.triggerAttackRelease("C4", "8n");
+                document.getElementById('username-input-section').classList.add('hidden');
+                document.getElementById('terminal-section').classList.remove('hidden');
+                
+                const steps = ["Connecting...", "Searching for user...", "User Found!", "Syncing...", "Done!"];
+                steps.forEach((s, i) => {
+                    setTimeout(() => {
+                        const p = document.createElement('p');
+                        p.textContent = `> ${s}`;
+                        p.className = i === 2 ? 'text-[#CFFF04]' : 'text-gray-400';
+                        terminalOutput.appendChild(p);
+                        if(i === steps.length - 1) {
+                            setTimeout(() => { page1.classList.add('hidden'); page2.classList.remove('hidden'); }, 1000);
+                        }
+                    }, i * 600);
+                });
             };
 
-            // كاروسيل التقييمات
-            const reviews = ["@Alex: Just got my 800! Thanks!", "@BuildMaster: Legit site, took 5 mins.", "@Sarah_G: Best reward site so far."];
-            let reviewIdx = 0;
-            const carousel = document.getElementById('testimonials-carousel');
-            setInterval(() => {
-                carousel.innerHTML = `<p class="text-lg italic text-[#CFFF04] animate-pulse">${reviews[reviewIdx]}</p>`;
-                reviewIdx = (reviewIdx + 1) % reviews.length;
-            }, 3000);
+            confirmBtn.onclick = () => {
+                synth.triggerAttackRelease("G4", "8n");
+                modal.classList.remove('hidden');
+            };
+
+            // Particles
+            const pContainer = document.getElementById('particles-container');
+            for(let i=0; i<30; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                const size = Math.random()*4+2;
+                p.style.width = p.style.height = `${size}px`;
+                p.style.left = `${Math.random()*100}%`;
+                p.style.top = `${Math.random()*100}%`;
+                p.style.animationDuration = `${Math.random()*10+10}s`;
+                pContainer.appendChild(p);
+            }
         });
     </script>
 </body>
 </html>
-
 
