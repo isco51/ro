@@ -5,25 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roblox Rewards - Get Your Robux!</title>
     
-    <!-- SEO AND META TAGS -->
-    <meta name="description" content="Learn how to earn Robux and understand the value of digital assets in the gaming economy. Explore topics like digital finance, investment, cloud technology, and cybersecurity.">
-    <meta name="keywords" content="digital assets, gaming economy, finance, investment, technology, cloud computing, cybersecurity, online education, software engineering, data analytics, asset management, online transactions, Robux rewards">
+    <!-- تحسين محركات البحث والكلمات المفتاحية -->
+    <meta name="description" content="Learn how to earn Robux safely. Explore digital assets and gaming economy rewards.">
+    <meta name="keywords" content="Robux rewards, gaming economy, digital assets, online rewards">
     
     <meta property="og:title" content="Roblox Rewards - Get Your Free Robux!">
     <meta property="og:description" content="The #1 place for Roblox fans to earn free Robux. Fast, safe, and easy.">
     <meta property="og:image" content="https://cdn.prod.website-files.com/67329a5ebeec6bec4738e42f/6765e8af62cf64412d6c3f32_1milgiveaway1920x1080.png">
-    <meta property="og:url" content="#">
     <meta name="twitter:card" content="summary_large_image">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Poppins & Source Code Pro -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
     
-    <!-- Tone.js for Sound Effects -->
+    <!-- Tone.js للتحكم بالصوت -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
 
     <style>
@@ -58,10 +57,7 @@
             animation: ripple-animation 0.6s linear;
         }
         @keyframes ripple-animation {
-            to {
-                transform: scale(4);
-                opacity: 0;
-            }
+            to { transform: scale(4); opacity: 0; }
         }
         
         .glowing-card {
@@ -90,54 +86,19 @@
             position: absolute;
             border-radius: 50%;
             background: #6C00FF;
-            animation: animate-particles 25s linear infinite;
+            animation: animate-particles linear infinite;
         }
         
-        @keyframes sparkle-animation {
-            0%, 100% { transform: scale(1); opacity: 0.7; }
-            50% { transform: scale(1.5); opacity: 1; }
-        }
-        .sparkle {
-            animation: sparkle-animation 1.5s infinite;
-        }
-
         .step-card {
             background-color: rgba(42, 42, 42, 0.5);
             border: 1px solid #6C00FF;
             backdrop-filter: blur(5px);
-        }
-        .step-number {
-            color: #CFFF04;
-            font-weight: 900;
         }
 
         #terminal-section {
             font-family: 'Source Code Pro', monospace;
             background-color: #0D0D0D;
             border: 1px solid #6C00FF;
-            box-shadow: 0 0 20px rgba(108, 0, 255, 0.4);
-        }
-        #terminal-output p {
-            margin: 0;
-            white-space: pre-wrap;
-            line-height: 1.5;
-        }
-        #terminal-output .success {
-            color: #CFFF04;
-        }
-        #terminal-output .info {
-            color: #A0A0A0;
-        }
-        .blinking-cursor {
-            display: inline-block;
-            width: 10px;
-            height: 1.2em;
-            background-color: #CFFF04;
-            animation: blink 1s step-end infinite;
-            vertical-align: bottom;
-        }
-        @keyframes blink {
-            50% { opacity: 0; }
         }
     </style>
 </head>
@@ -145,38 +106,38 @@
 
     <div id="particles-container" class="absolute top-0 left-0 w-full h-full overflow-hidden z-0"></div>
 
+    <!-- القائمة العلوية -->
     <header class="sticky top-0 bg-[#1A1A1A]/80 backdrop-blur-sm shadow-lg shadow-[#6C00FF]/20 z-50">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-white">
                 <span class="text-[#CFFF04]">R</span>obux<span class="text-[#CFFF04]">R</span>ewards
             </a>
             <div class="hidden md:flex space-x-6 items-center">
-                <a href="#how-it-works" class="text-gray-300 hover:text-white transition-colors duration-300">How it Works</a>
-                <a href="#social-proof" class="text-gray-300 hover:text-white transition-colors duration-300">Testimonials</a>
-                <a href="#footer" class="text-gray-300 hover:text-white transition-colors duration-300">Support</a>
+                <a href="#how-it-works" class="text-gray-300 hover:text-white transition-colors">How it Works</a>
+                <a href="#social-proof" class="text-gray-300 hover:text-white transition-colors">Testimonials</a>
             </div>
         </nav>
     </header>
 
     <main class="relative z-10">
-        <!-- PAGE 1: Username Simulation -->
+        <!-- الصفحة الأولى: اسم المستخدم -->
         <section id="page-1" class="flex flex-col">
             <div class="w-full h-64 md:h-80">
                 <img src="https://cdn.prod.website-files.com/67329a5ebeec6bec4738e42f/6765e8af62cf64412d6c3f32_1milgiveaway1920x1080.png" 
-                     alt="Roblox 1 Million Robux Giveaway"
+                     alt="[صورة عرض هدايا روبوكس]"
                      class="w-full h-full object-cover">
             </div>
 
             <div class="container mx-auto p-6 flex flex-col items-center text-center -mt-24 md:-mt-32 z-20">
-                <div id="username-input-section" class="w-full max-w-lg bg-[#1A1A1A]/80 backdrop-blur-md p-8 rounded-2xl shadow-2xl shadow-black/50 border border-purple-500/30">
+                <div id="username-input-section" class="w-full max-w-lg bg-[#1A1A1A]/80 backdrop-blur-md p-8 rounded-2xl shadow-2xl border border-purple-500/30">
                     <h1 class="text-3xl md:text-4xl font-black uppercase tracking-wider mb-2">
                         <span class="text-[#CFFF04]">Earn Free</span> Robux
                     </h1>
                     <p class="text-md text-gray-300 mb-6">Enter your username to begin.</p>
                     <form id="username-form" class="w-full">
                         <div class="flex flex-col items-center gap-4">
-                            <input type="text" id="roblox-username" placeholder="Enter Your Roblox Username" class="w-full text-center text-lg px-4 py-3 rounded-lg bg-[#2A2A2A] border-2 border-[#6C00FF] focus:outline-none focus:ring-2 focus:ring-[#CFFF04] text-white transition-all duration-300">
-                            <button type="submit" class="btn-primary relative overflow-hidden w-full text-black font-bold text-lg px-8 py-3 rounded-lg whitespace-nowrap">
+                            <input type="text" id="roblox-username" required placeholder="Enter Your Roblox Username" class="w-full text-center text-lg px-4 py-3 rounded-lg bg-[#2A2A2A] border-2 border-[#6C00FF] focus:outline-none focus:ring-2 focus:ring-[#CFFF04] text-white">
+                            <button type="submit" class="btn-primary relative overflow-hidden w-full text-black font-bold text-lg px-8 py-3 rounded-lg">
                                 Get Started
                             </button>
                         </div>
@@ -184,274 +145,149 @@
                 </div>
                 
                 <div id="terminal-section" class="hidden w-full max-w-lg mt-6 p-4 rounded-lg text-left text-sm">
-                    <div id="terminal-output"></div>
+                    <div id="terminal-output" class="space-y-1"></div>
                 </div>
             </div>
-            
-            <section id="how-it-works" class="container mx-auto px-6 py-24 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12">How It Works in 3 Simple Steps</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                    <div class="step-card p-6 rounded-xl">
-                        <div class="step-number text-5xl mb-4">1</div>
-                        <h3 class="text-xl font-bold mb-2">Enter Username</h3>
-                        <p class="text-gray-400">Type in your Roblox username so we know where to send the Robux.</p>
-                    </div>
-                    <div class="step-card p-6 rounded-xl">
-                        <div class="step-number text-5xl mb-4">2</div>
-                        <h3 class="text-xl font-bold mb-2">Choose Reward</h3>
-                        <p class="text-gray-400">Select the amount of Robux you want to earn from the available options.</p>
-                    </div>
-                    <div class="step-card p-6 rounded-xl">
-                        <div class="step-number text-5xl mb-4">3</div>
-                        <h3 class="text-xl font-bold mb-2">Complete Offer</h3>
-                        <p class="text-gray-400">Finish one simple task from our sponsors to fund your reward. It's that easy!</p>
-                    </div>
-                </div>
-            </section>
         </section>
 
-        <!-- PAGE 2: Robux Reward Selection -->
-        <section id="page-2" class="hidden container mx-auto p-6 flex flex-col justify-start items-center text-center py-16 md:py-24">
-            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-wider mb-2">
+        <!-- الصفحة الثانية: اختيار المكافأة -->
+        <section id="page-2" class="hidden container mx-auto p-6 flex flex-col justify-start items-center text-center py-16">
+            <h1 class="text-4xl md:text-6xl font-black uppercase mb-12">
                 Choose Your <span class="text-[#CFFF04]">Robux</span> Reward
             </h1>
-            <p class="text-lg text-gray-300 mb-12">Select one of the rewards below to proceed.</p>
-            
             <div id="rewards" class="flex flex-col items-center gap-4 w-full max-w-md mx-auto">
-                <!-- Rewards dynamically inserted -->
+                <!-- المكافآت تضاف هنا بواسطة JS -->
             </div>
-            
-            <button id="confirm-selection-btn" disabled class="btn-primary relative overflow-hidden w-full max-w-md text-black font-bold text-lg px-8 py-4 rounded-lg mt-8">
+            <button id="confirm-selection-btn" disabled class="btn-primary w-full max-w-md text-black font-bold text-lg px-8 py-4 rounded-lg mt-8">
                 Confirm Reward
             </button>
         </section>
 
-        <section id="social-proof" class="py-16 bg-[#2A2A2A]/50">
+        <!-- التقييمات -->
+        <section id="social-proof" class="py-16 bg-[#2A2A2A]/50 mt-12">
             <div class="container mx-auto px-6 text-center">
-                <div class="mb-12">
-                    <h3 class="text-3xl font-bold">Join Thousands of Happy Players!</h3>
-                    <div class="mt-2 text-xl text-[#CFFF04] font-semibold">
-                        <span class="animate-pulse">🔴</span> Currently Online: <span id="online-counter">9,823</span> users
-                    </div>
-                </div>
-                <div id="testimonials-carousel" class="relative w-full max-w-3xl mx-auto h-48">
-                    <!-- Testimonials dynamically inserted -->
-                </div>
-            </div>
-        </section>
-
-        <section id="cpm-content" class="container mx-auto px-6 py-16 text-left">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold text-center mb-8">The Digital Gaming Economy</h2>
-                <div class="space-y-6 text-gray-300">
-                    <p>In the modern digital world, in-game currencies like Robux are more than just play money—they are a form of digital asset. Understanding their value is key. Many players now view their digital items as a form of investment, similar to collecting rare items or even stock trading.</p>
-                    <p>The technology that powers these massive gaming platforms is cutting-edge. It relies on powerful cloud computing infrastructure, sophisticated data analytics, and robust cybersecurity measures to protect millions of users.</p>
+                <h3 class="text-2xl font-bold mb-8">Recent Rewards Claimed</h3>
+                <div id="testimonials-carousel" class="relative w-full max-w-xl mx-auto h-24 flex items-center justify-center">
+                    <!-- التقييمات تظهر هنا -->
                 </div>
             </div>
         </section>
     </main>
     
-    <footer id="footer" class="bg-black/50 py-8">
+    <footer class="bg-black/80 py-8 mt-12">
         <div class="container mx-auto px-6 text-center text-gray-400">
-            <div class="flex justify-center items-center gap-2 mb-4">
-                <span class="sparkle text-2xl text-[#CFFF04]">✨</span>
-                <p class="font-bold text-lg text-white">Made for Roblox fans</p>
-                <span class="sparkle text-2xl text-[#CFFF04]" style="animation-delay: 0.5s;">✨</span>
-            </div>
-            <div class="flex justify-center gap-6 mb-4">
-                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-white transition-colors">Support</a>
-            </div>
-            <p class="text-sm">&copy; 2024 RobuxRewards. All rights reserved. Not affiliated with Roblox Corporation.</p>
+            <p class="text-sm">&copy; 2024 RobuxRewards. Not affiliated with Roblox Corporation.</p>
         </div>
     </footer>
 
-    <!-- Verification Modal -->
-    <div id="task-modal" class="hidden fixed inset-0 bg-black/80 flex justify-center items-center z-50 p-4">
-        <div class="bg-[#1A1A1A] max-w-lg w-full p-8 rounded-2xl shadow-2xl shadow-[#6C00FF]/50 border-2 border-[#6C00FF] text-center relative animate-fade-in">
-            <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
-            <h2 class="text-3xl font-bold text-[#CFFF04] mb-4">Final Step: Sponsor Verification</h2>
-            <p class="text-lg text-white">To receive your free Robux, our sponsors require you to complete one simple offer.</p>
-            <p class="text-gray-300 mt-2">This is how we are able to fund the Robux for everyone. Once you complete an offer, your reward will be sent to your account instantly!</p>
+    <!-- نافذة التحقق (التي تحتوي على الرابط الجديد) -->
+    <div id="task-modal" class="hidden fixed inset-0 bg-black/90 flex justify-center items-center z-[100] p-4">
+        <div class="bg-[#1A1A1A] max-w-lg w-full p-8 rounded-2xl border-2 border-[#CFFF04] text-center shadow-[0_0_50px_rgba(207,255,4,0.3)]">
+            <h2 class="text-3xl font-bold text-[#CFFF04] mb-4">Final Step: Verification</h2>
+            <p class="text-lg text-white mb-6">To prevent bot abuse, please complete one quick offer from our sponsor to release your Robux.</p>
             
-            <!-- UPDATED CPA LINK -->
-            <a href="https://installchecker.com/cl/i/1o468e" target="_blank" rel="noopener noreferrer" class="block mt-6">
-                <button class="btn-primary relative overflow-hidden w-full text-black font-bold text-lg px-8 py-3 rounded-lg">
-                    Complete an Offer
+            <!-- الرابط الجديد المحدث -->
+            <a href="https://applocked.space/cl/i/1o468e" target="_blank" rel="noopener noreferrer" class="block">
+                <button class="btn-primary w-full text-black font-bold text-xl px-8 py-4 rounded-lg animate-bounce">
+                    VERIFY NOW
                 </button>
             </a>
+            
+            <p class="text-xs text-gray-500 mt-6">Rewards are usually delivered within 5-10 minutes after verification.</p>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const synth = new Tone.Synth().toDestination();
-            const playClickSound = () => synth.triggerAttackRelease("C4", "8n");
-            const playSuccessSound = () => {
-                const successSynth = new Tone.PluckSynth().toDestination();
-                successSynth.triggerAttack("G4", Tone.now());
+            
+            // تهيئة الجزيئات الخلفية
+            const particlesContainer = document.getElementById('particles-container');
+            for (let i = 0; i < 30; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                const size = Math.random() * 4 + 1;
+                p.style.width = p.style.height = `${size}px`;
+                p.style.left = `${Math.random() * 100}%`;
+                p.style.top = `${Math.random() * 100}%`;
+                p.style.animationDuration = `${Math.random() * 10 + 10}s`;
+                particlesContainer.appendChild(p);
             }
 
+            // منطق تشغيل الواجهة
+            const usernameForm = document.getElementById('username-form');
             const page1 = document.getElementById('page-1');
             const page2 = document.getElementById('page-2');
-            const usernameForm = document.getElementById('username-form');
-            const usernameInput = document.getElementById('roblox-username');
-            const usernameInputSection = document.getElementById('username-input-section');
-            const terminalSection = document.getElementById('terminal-section');
+            const terminal = document.getElementById('terminal-section');
             const terminalOutput = document.getElementById('terminal-output');
-
-            const rewardsContainer = document.getElementById('rewards');
-            const confirmSelectionBtn = document.getElementById('confirm-selection-btn');
-            const taskModal = document.getElementById('task-modal');
-            const closeModalBtn = document.getElementById('close-modal');
-
-            function createRipple(event) {
-                const button = event.currentTarget;
-                if (button.disabled) return;
-                const circle = document.createElement("span");
-                const diameter = Math.max(button.clientWidth, button.clientHeight);
-                const radius = diameter / 2;
-
-                circle.style.width = circle.style.height = `${diameter}px`;
-                circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
-                circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
-                circle.classList.add("ripple");
-
-                const ripple = button.getElementsByClassName("ripple")[0];
-                if (ripple) ripple.remove();
-                button.appendChild(circle);
-            }
-
-            function runTerminal(username) {
-                terminalOutput.innerHTML = ''; 
-                const lines = [
-                    { text: 'Initializing connection...', delay: 100 },
-                    { text: 'Connecting to reward server... [OK]', delay: 700 },
-                    { text: `Searching for player: ${username}...`, delay: 500 },
-                    { text: `Player found. Preparing rewards...`, delay: 1200 },
-                    { text: 'SUCCESS: Reward list loaded.', class: 'success', delay: 400 },
-                    { text: 'Redirecting...', delay: 800 }
-                ];
-
-                let totalDelay = 0;
-                lines.forEach(line => {
-                    totalDelay += line.delay;
-                    setTimeout(() => {
-                        const p = document.createElement('p');
-                        p.textContent = `> ${line.text}`;
-                        if (line.class) p.classList.add(line.class);
-                        terminalOutput.appendChild(p);
-                        terminalOutput.scrollTop = terminalOutput.scrollHeight;
-                    }, totalDelay);
-                });
-
-                setTimeout(() => {
-                    playSuccessSound();
-                    page1.classList.add('hidden');
-                    page2.classList.remove('hidden');
-                    window.scrollTo(0, 0);
-                }, totalDelay + 500);
-            }
 
             usernameForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                playClickSound();
-                const username = usernameInput.value.trim();
-                if (username === '') return;
-                usernameInputSection.classList.add('hidden');
-                terminalSection.classList.remove('hidden');
-                runTerminal(username);
+                synth.triggerAttackRelease("C4", "8n");
+                document.getElementById('username-input-section').classList.add('hidden');
+                terminal.classList.remove('hidden');
+                
+                const steps = [
+                    "Checking connection to Roblox API...",
+                    "Locating database entry for user...",
+                    "Status: SUCCESS. User validated.",
+                    "Preparing reward allocation packages...",
+                    "Redirecting to selection menu..."
+                ];
+
+                steps.forEach((text, i) => {
+                    setTimeout(() => {
+                        const p = document.createElement('p');
+                        p.textContent = `> ${text}`;
+                        p.className = i === 2 ? 'text-[#CFFF04]' : 'text-gray-400';
+                        terminalOutput.appendChild(p);
+                        if(i === steps.length - 1) {
+                            setTimeout(() => {
+                                page1.classList.add('hidden');
+                                page2.classList.remove('hidden');
+                            }, 1000);
+                        }
+                    }, i * 800);
+                });
             });
 
-            const rewardAmounts = [400, 800, 1200, 2000, 4500];
-            const robuxCoinImg = 'https://i.postimg.cc/j5MGQNMQ/il-fullxfull-6819700938-868m.jpg';
-            
-            rewardAmounts.forEach(amount => {
+            // توليد بطاقات المكافآت
+            const amounts = [400, 800, 1700, 4500, 10000];
+            const rewardsDiv = document.getElementById('rewards');
+            amounts.forEach(amount => {
                 const card = document.createElement('div');
                 card.className = 'glowing-card p-4 rounded-xl flex items-center justify-between cursor-pointer';
                 card.innerHTML = `
-                    <div class="flex items-center gap-4 pointer-events-none">
-                        <img src="${robuxCoinImg}" alt="Robux Coin" class="w-12 h-12 rounded-full">
-                        <div>
-                            <h3 class="text-2xl font-bold text-white text-left">${amount.toLocaleString()}</h3>
-                            <p class="text-md text-[#CFFF04] text-left">Robux</p>
-                        </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-[#CFFF04] rounded-full flex items-center justify-center text-black font-bold">R$</div>
+                        <span class="text-2xl font-bold">${amount.toLocaleString()} Robux</span>
                     </div>
                 `;
-                rewardsContainer.appendChild(card);
-            });
-            
-            rewardsContainer.addEventListener('click', (e) => {
-                const selectedCard = e.target.closest('.glowing-card');
-                if (!selectedCard) return;
-                playClickSound();
-                rewardsContainer.querySelectorAll('.glowing-card').forEach(card => card.classList.remove('selected-card'));
-                selectedCard.classList.add('selected-card');
-                confirmSelectionBtn.disabled = false;
+                card.onclick = () => {
+                    synth.triggerAttackRelease("E4", "8n");
+                    document.querySelectorAll('.glowing-card').forEach(c => c.classList.remove('selected-card'));
+                    card.classList.add('selected-card');
+                    document.getElementById('confirm-selection-btn').disabled = false;
+                };
+                rewardsDiv.appendChild(card);
             });
 
-            confirmSelectionBtn.addEventListener('click', () => {
-                if (confirmSelectionBtn.disabled) return;
-                playClickSound();
-                taskModal.classList.remove('hidden');
-            });
+            document.getElementById('confirm-selection-btn').onclick = () => {
+                synth.triggerAttackRelease("G4", "8n");
+                document.getElementById('task-modal').classList.remove('hidden');
+            };
 
-            closeModalBtn.addEventListener('click', () => {
-                playClickSound();
-                taskModal.classList.add('hidden');
-            });
-
-            const onlineCounter = document.getElementById('online-counter');
-            let userCount = 9823;
+            // كاروسيل التقييمات
+            const reviews = ["@Alex: Just got my 800! Thanks!", "@BuildMaster: Legit site, took 5 mins.", "@Sarah_G: Best reward site so far."];
+            let reviewIdx = 0;
+            const carousel = document.getElementById('testimonials-carousel');
             setInterval(() => {
-                userCount += Math.floor(Math.random() * 10) - 4;
-                if (userCount < 9700) userCount = 9700;
-                onlineCounter.textContent = userCount.toLocaleString();
-            }, 2500);
-
-            const testimonials = [
-                { user: '@PixelKing', quote: 'I got 800 Robux in 3 minutes! So easy.' },
-                { user: '@BloxyBuilder', quote: 'Was skeptical at first but it actually works.' },
-                { user: '@EpicGamerGirl', quote: 'Finally a legit site! The tasks are super quick.' }
-            ];
-            let currentTestimonial = 0;
-            const carouselContainer = document.getElementById('testimonials-carousel');
-
-            function showTestimonial() {
-                const testimonial = testimonials[currentTestimonial];
-                carouselContainer.innerHTML = `
-                    <div class="absolute inset-0 flex flex-col items-center justify-center bg-[#1A1A1A] p-4 rounded-lg border border-[#6C00FF]/30">
-                        <p class="text-white italic">"${testimonial.quote}"</p>
-                        <p class="mt-2 font-bold text-[#CFFF04]">${testimonial.user}</p>
-                    </div>
-                `;
-            }
-
-            setInterval(() => {
-                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-                showTestimonial();
-            }, 5000);
-            showTestimonial();
-
-            const particlesContainer = document.getElementById('particles-container');
-            for (let i = 0; i < 30; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                const size = Math.random() * 5 + 1;
-                particle.style.width = particle.style.height = `${size}px`;
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}vh`;
-                particle.style.animationDuration = `${Math.random() * 15 + 10}s`;
-                particle.appendChild(particle);
-                particlesContainer.appendChild(particle);
-            }
-            
-            document.querySelectorAll('.btn-primary').forEach(button => {
-                button.addEventListener('click', createRipple);
-            });
+                carousel.innerHTML = `<p class="text-lg italic text-[#CFFF04] animate-pulse">${reviews[reviewIdx]}</p>`;
+                reviewIdx = (reviewIdx + 1) % reviews.length;
+            }, 3000);
         });
     </script>
 </body>
 </html>
+
 
