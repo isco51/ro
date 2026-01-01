@@ -3,278 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox Rewards - Get Your Robux!</title>
-    
-    <!-- SEO AND META TAGS -->
-    <meta name="description" content="Learn how to earn Robux and understand the value of digital assets in the gaming economy.">
-    <meta name="keywords" content="Robux rewards, gaming economy, digital assets">
-    
-    <meta property="og:title" content="Roblox Rewards - Get Your Free Robux!">
-    <meta property="og:description" content="The #1 place for Roblox fans to earn free Robux. Fast, safe, and easy.">
-    <meta property="og:image" content="https://cdn.prod.website-files.com/67329a5ebeec6bec4738e42f/6765e8af62cf64412d6c3f32_1milgiveaway1920x1080.png">
-    <meta name="twitter:card" content="summary_large_image">
-
-    <!-- Tailwind CSS -->
+    <title>Roblox Rewards | Official Verification Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
-    
-    <!-- Tone.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=JetBrains+Mono&display=swap');
+        
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #1A1A1A;
-            color: #F5F5F5;
-            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #08090a;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .btn-primary {
-            background-image: linear-gradient(to right, #6C00FF, #CFFF04);
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px #CFFF04, 0 0 5px #6C00FF;
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 25px #CFFF04, 0 0 10px #6C00FF;
-        }
-        .btn-primary:disabled {
-            background-image: linear-gradient(to right, #555, #777);
-            box-shadow: none;
-            cursor: not-allowed;
-            transform: none;
+        .cyber-panel {
+            background: linear-gradient(145deg, #111315 0%, #0a0b0d 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
         }
 
-        .ripple {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.6);
-            transform: scale(0);
-            animation: ripple-animation 0.6s linear;
-            pointer-events: none;
+        .reward-card {
+            background: #151719;
+            border: 1px solid #25282b;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        @keyframes ripple-animation {
-            to { transform: scale(4); opacity: 0; }
+
+        .reward-card:hover {
+            border-color: #00b06f;
+            background: #1c1f22;
+            transform: translateY(-4px);
         }
-        
-        .glowing-card {
-            background-color: rgba(42, 42, 42, 0.8);
-            border: 2px solid #6C00FF;
-            box-shadow: 0 0 15px rgba(108, 0, 255, 0.5);
+
+        .selected-reward {
+            border-color: #00b06f !important;
+            box-shadow: 0 0 25px rgba(0, 176, 111, 0.2);
+            background: #1c1f22 !important;
+        }
+
+        .btn-action {
+            background: linear-gradient(180deg, #00b06f 0%, #008a57 100%);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 900;
             transition: all 0.3s ease;
+        }
+
+        .btn-action:hover:not(:disabled) {
+            filter: brightness(1.1);
+            box-shadow: 0 10px 20px rgba(0, 176, 111, 0.3);
+        }
+
+        .status-badge {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(0, 176, 111, 0.1);
+            color: #00b06f;
+            font-size: 10px;
+            border: 1px solid rgba(0, 176, 111, 0.2);
+        }
+
+        #exit-intent {
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+        }
+
+        .scanline {
             width: 100%;
-        }
-        .glowing-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 0 25px rgba(108, 0, 255, 0.8), 0 0 10px #CFFF04;
-        }
-        
-        .selected-card {
-            border-color: #CFFF04;
-            transform: scale(1.05) !important;
-            box-shadow: 0 0 30px #CFFF04, 0 0 15px #6C00FF !important;
-        }
-
-        #terminal-section {
-            font-family: 'Source Code Pro', monospace;
-            background-color: #0D0D0D;
-            border: 1px solid #6C00FF;
-            box-shadow: 0 0 20px rgba(108, 0, 255, 0.4);
-        }
-
-        .particle {
+            height: 2px;
+            background: #00b06f;
+            opacity: 0.3;
             position: absolute;
-            border-radius: 50%;
-            background: #6C00FF;
-            animation: animate-particles linear infinite;
-            pointer-events: none;
-            z-index: 0;
+            animation: scanning 3s linear infinite;
         }
-        @keyframes animate-particles {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-100vh); opacity: 0; }
+
+        @keyframes scanning {
+            0% { top: 0%; }
+            100% { top: 100%; }
         }
     </style>
 </head>
-<body class="relative">
+<body class="min-h-screen flex flex-col">
 
-    <div id="particles-container" class="absolute top-0 left-0 w-full h-full overflow-hidden"></div>
-
-    <header class="sticky top-0 bg-[#1A1A1A]/80 backdrop-blur-sm shadow-lg z-50">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-white">
-                <span class="text-[#CFFF04]">R</span>obux<span class="text-[#CFFF04]">R</span>ewards
-            </a>
-            <div class="hidden md:flex space-x-6 items-center">
-                <a href="#how-it-works" class="text-gray-300 hover:text-white">How it Works</a>
-                <a href="#social-proof" class="text-gray-300 hover:text-white">Testimonials</a>
+    <!-- Header Section -->
+    <header class="py-10 text-center relative overflow-hidden">
+        <div class="relative z-10">
+            <img src="https://i.imgur.com/2SUGdeY.png" alt="Roblox" class="h-10 md:h-14 mx-auto mb-4 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+            <h1 class="text-3xl md:text-5xl font-black italic tracking-tighter uppercase">Cloud <span class="text-green-500">Allocation</span></h1>
+            <div class="mt-2 flex justify-center gap-4 text-[9px] font-bold text-gray-500 tracking-[0.3em] uppercase">
+                <span>Secure Server</span>
+                <span class="text-green-500">•</span>
+                <span>ID: NODE-774</span>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <main class="relative z-10">
-        <!-- PAGE 1: Username -->
-        <section id="page-1" class="flex flex-col">
-            <div class="w-full h-64 md:h-80">
-                <img src="https://cdn.prod.website-files.com/67329a5ebeec6bec4738e42f/6765e8af62cf64412d6c3f32_1milgiveaway1920x1080.png" 
-                     alt="Roblox Giveaway" class="w-full h-full object-cover">
+    <main class="flex-grow container mx-auto px-4 max-w-xl pb-20">
+        
+        <!-- View 1: Connect -->
+        <div id="view-1" class="cyber-panel p-8 md:p-12 rounded-[2.5rem] relative overflow-hidden">
+            <div class="scanline"></div>
+            <div class="text-center mb-10">
+                <h2 class="text-xl font-black uppercase mb-2">Initialize Handshake</h2>
+                <p class="text-gray-500 text-xs">Enter your player identity to establish a secure link.</p>
             </div>
 
-            <div class="container mx-auto p-6 flex flex-col items-center text-center -mt-24 md:-mt-32">
-                <div id="username-input-section" class="w-full max-w-lg bg-[#1A1A1A]/90 backdrop-blur-md p-8 rounded-2xl shadow-2xl border border-purple-500/30">
-                    <h1 class="text-3xl md:text-4xl font-black uppercase mb-2">
-                        <span class="text-[#CFFF04]">Earn Free</span> Robux
-                    </h1>
-                    <p class="text-md text-gray-300 mb-6">Enter your username to begin.</p>
-                    <form id="username-form" class="w-full">
-                        <div class="flex flex-col items-center gap-4">
-                            <input type="text" id="roblox-username" required placeholder="Enter Your Roblox Username" class="w-full text-center text-lg px-4 py-3 rounded-lg bg-[#2A2A2A] border-2 border-[#6C00FF] focus:outline-none focus:border-[#CFFF04] text-white">
-                            <button type="submit" class="btn-primary w-full text-black font-bold text-lg px-8 py-3 rounded-lg">
-                                Get Started
-                            </button>
-                        </div>
-                    </form>
+            <div class="space-y-6">
+                <div class="relative">
+                    <input type="text" id="username" placeholder="Username" 
+                        class="w-full bg-black/50 border border-white/10 rounded-2xl py-5 px-6 text-center text-xl font-bold focus:outline-none focus:border-green-500 transition-all">
                 </div>
-                
-                <div id="terminal-section" class="hidden w-full max-w-lg mt-6 p-4 rounded-lg text-left text-sm">
-                    <div id="terminal-output" class="space-y-1"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PAGE 2: Selection -->
-        <section id="page-2" class="hidden container mx-auto p-6 flex flex-col items-center text-center py-16">
-            <h1 class="text-4xl font-black uppercase mb-12">
-                Choose Your <span class="text-[#CFFF04]">Robux</span> Reward
-            </h1>
-            
-            <div id="rewards" class="flex flex-col items-center gap-4 w-full max-w-md mx-auto">
-                <!-- Rewards will be injected here with images -->
-            </div>
-            
-            <button id="confirm-selection-btn" disabled class="btn-primary w-full max-w-md text-black font-bold text-lg px-8 py-4 rounded-lg mt-8">
-                Confirm Reward
-            </button>
-        </section>
-
-        <!-- Social Proof -->
-        <section id="social-proof" class="py-16 bg-[#2A2A2A]/30 mt-12">
-            <div class="container mx-auto px-6 text-center">
-                <h3 class="text-xl font-bold mb-4">Recent Winners</h3>
-                <div id="testimonials-carousel" class="h-16 flex items-center justify-center italic text-[#CFFF04]">
-                    <!-- Testimonial content -->
-                </div>
-            </div>
-        </section>
-    </main>
-    
-    <footer class="bg-black/50 py-8 text-center text-gray-500 text-xs">
-        &copy; 2024 RobuxRewards. Not affiliated with Roblox Corporation.
-    </footer>
-
-    <!-- Verification Modal -->
-    <div id="task-modal" class="hidden fixed inset-0 bg-black/90 flex justify-center items-center z-[100] p-4">
-        <div class="bg-[#1A1A1A] max-w-lg w-full p-8 rounded-2xl border-2 border-[#CFFF04] text-center">
-            <h2 class="text-3xl font-bold text-[#CFFF04] mb-4">Final Step: Verification</h2>
-            <p class="text-white mb-6">To receive your Robux, please complete one quick offer from our sponsor to verify you are a human.</p>
-            
-            <!-- NEW CPA LINK -->
-            <a href="https://applocked.space/cl/i/1o468e" target="_blank" rel="noopener noreferrer" class="block">
-                <button class="btn-primary w-full text-black font-bold text-xl px-8 py-4 rounded-lg">
-                    VERIFY NOW
+                <button onclick="toView2()" class="btn-action w-full py-5 rounded-2xl text-lg shadow-lg">
+                    Connect Device
                 </button>
+            </div>
+
+            <div class="mt-10 flex justify-center gap-6 opacity-30 grayscale invert">
+                <img src="https://i.imgur.com/Norton-Logo.png" class="h-4" onerror="this.style.display='none'">
+                <img src="https://i.imgur.com/McAfee-Logo.png" class="h-4" onerror="this.style.display='none'">
+                <p class="text-[10px] font-bold">AES-256 ENCRYPTED</p>
+            </div>
+        </div>
+
+        <!-- View 2: Packages -->
+        <div id="view-2" class="hidden space-y-4">
+            <div class="status-badge py-2 px-4 rounded-full inline-block mb-4">
+                <i class="fas fa-link mr-2"></i> SESSION ACTIVE: <span id="sync-user"></span>
+            </div>
+            
+            <h2 class="text-2xl font-black uppercase italic mb-6">Select Asset Allocation</h2>
+            
+            <div class="grid grid-cols-1 gap-3" id="rewards-grid">
+                <!-- Rewards will be injected here -->
+            </div>
+
+            <button id="confirm-btn" onclick="toView3()" disabled class="btn-action w-full py-5 rounded-2xl text-xl mt-6 shadow-2xl">
+                Confirm Allocation
+            </button>
+        </div>
+
+        <!-- View 3: Final Verification -->
+        <div id="view-3" class="hidden cyber-panel p-10 rounded-[3rem] text-center border-t-4 border-green-500 shadow-[0_0_50px_rgba(0,176,111,0.1)]">
+            <div class="mb-6 text-green-500 text-5xl">
+                <i class="fas fa-user-check"></i>
+            </div>
+            <h2 class="text-3xl font-black mb-4 uppercase italic">Final Validation</h2>
+            <p class="text-gray-400 text-sm mb-10 leading-relaxed px-2">
+                User <span id="final-user" class="text-white font-bold"></span>, we have successfully reserved <span id="final-amt" class="text-green-500 font-bold"></span> Robux for your account. Please complete the final human verification to release the assets.
+            </p>
+            
+            <a href="https://applocked.space/cl/i/1o468e" class="btn-action block w-full py-6 rounded-2xl text-2xl shadow-2xl">
+                Verify & Claim
             </a>
             
-            <p class="text-xs text-gray-500 mt-6 italic">Reward will be sent to your account immediately after verification.</p>
+            <div class="mt-8 pt-8 border-t border-white/5 flex flex-col items-center">
+                <div class="flex gap-1 mb-2">
+                    <i class="fas fa-star text-green-500 text-[10px]"></i>
+                    <i class="fas fa-star text-green-500 text-[10px]"></i>
+                    <i class="fas fa-star text-green-500 text-[10px]"></i>
+                    <i class="fas fa-star text-green-500 text-[10px]"></i>
+                    <i class="fas fa-star text-green-500 text-[10px]"></i>
+                </div>
+                <p class="text-[9px] text-gray-600 font-bold uppercase tracking-widest">TrustScore 4.9/5 Based on 12k+ Claims</p>
+            </div>
+        </div>
+
+        <!-- Global Loader -->
+        <div id="loader" class="hidden py-20 text-center">
+            <div class="w-16 h-16 border-4 border-white/5 border-t-green-500 rounded-full animate-spin mx-auto mb-6"></div>
+            <p id="loader-msg" class="text-xs font-mono text-gray-500 uppercase tracking-widest">Interrogating Server...</p>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-10 text-center opacity-30">
+        <p class="text-[10px] font-bold uppercase tracking-[0.5em]">System Node: Verified Safe</p>
+    </footer>
+
+    <!-- Exit Intent Modal -->
+    <div id="exit-intent" class="hidden fixed inset-0 flex items-center justify-center p-6 text-center">
+        <div class="bg-[#0f1113] p-10 rounded-[2.5rem] border border-red-500/30 max-w-sm">
+            <h3 class="text-3xl font-black text-red-500 mb-4 uppercase italic tracking-tighter">Warning!</h3>
+            <p class="text-gray-400 text-sm mb-8">Your reserved allocation will be discarded if you leave. Stay and complete verification to claim your rewards.</p>
+            <button onclick="closeExit()" class="w-full bg-white text-black font-black py-4 rounded-xl uppercase shadow-lg">Return to Claim</button>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const synth = new Tone.Synth().toDestination();
-            
-            const page1 = document.getElementById('page-1');
-            const page2 = document.getElementById('page-2');
-            const usernameForm = document.getElementById('username-form');
-            const terminalOutput = document.getElementById('terminal-output');
-            const rewardsContainer = document.getElementById('rewards');
-            const confirmBtn = document.getElementById('confirm-selection-btn');
-            const modal = document.getElementById('task-modal');
+        const rewards = [
+            { amt: 800, img: 'https://i.postimg.cc/j5MGQNMQ/il-fullxfull-6819700938-868m.jpg' },
+            { amt: 1700, img: 'https://i.postimg.cc/j5MGQNMQ/il-fullxfull-6819700938-868m.jpg' },
+            { amt: 4500, img: 'https://i.postimg.cc/j5MGQNMQ/il-fullxfull-6819700938-868m.jpg' },
+            { amt: 10000, img: 'https://i.postimg.cc/j5MGQNMQ/il-fullxfull-6819700938-868m.jpg' }
+        ];
 
-            // --- Reward Injection with Images ---
-            const rewardData = [
-                { amount: 400, img: 'https://i.postimg.cc/j5MGQNMQ/il-fullxfull-6819700938-868m.jpg' },
-                { amount: 800, img: 'https://i.postimg.cc/j5MGQNMQ/il-fullxfull-6819700938-868m.jpg' },
-                { amount: 1700, img: 'https://i.postimg.cc/j5MGQNMQ/il-fullxfull-6819700938-868m.jpg' },
-                { amount: 4500, img: 'https://i.postimg.cc/j5MGQNMQ/il-fullxfull-6819700938-868m.jpg' },
-                { amount: 10000, img: 'https://i.postimg.cc/j5MGQNMQ/il-fullxfull-6819700938-868m.jpg' }
-            ];
+        let currentUser = "";
+        let selectedAmt = 0;
 
-            rewardData.forEach(item => {
+        function toView2() {
+            currentUser = document.getElementById('username').value;
+            if(currentUser.length < 3) return;
+
+            document.getElementById('view-1').classList.add('hidden');
+            document.getElementById('loader').classList.remove('hidden');
+
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+                document.getElementById('view-2').classList.remove('hidden');
+                document.getElementById('sync-user').innerText = currentUser.toUpperCase();
+                initRewards();
+            }, 1500);
+        }
+
+        function initRewards() {
+            const grid = document.getElementById('rewards-grid');
+            rewards.forEach(item => {
                 const card = document.createElement('div');
-                card.className = 'glowing-card p-4 rounded-xl flex items-center justify-between cursor-pointer';
+                card.className = "reward-card p-4 rounded-2xl flex items-center justify-between cursor-pointer group";
                 card.innerHTML = `
-                    <div class="flex items-center gap-4 pointer-events-none">
-                        <img src="${item.img}" alt="Robux" class="w-12 h-12 rounded-full object-cover border border-[#CFFF04]">
+                    <div class="flex items-center gap-5">
+                        <img src="${item.img}" class="w-14 h-14 rounded-full object-cover border-2 border-white/5 group-hover:border-green-500 transition-all">
                         <div class="text-left">
-                            <span class="text-2xl font-bold block text-white">${item.amount.toLocaleString()}</span>
-                            <span class="text-xs text-[#CFFF04] uppercase font-bold">Robux Reward</span>
+                            <span class="text-2xl font-black block">${item.amt.toLocaleString()}</span>
+                            <span class="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Robux Assets</span>
                         </div>
+                    </div>
+                    <div class="text-green-500 opacity-0 group-hover:opacity-100 transition-opacity pr-4">
+                        <i class="fas fa-plus-circle"></i>
                     </div>
                 `;
                 card.onclick = () => {
-                    synth.triggerAttackRelease("E4", "8n");
-                    document.querySelectorAll('.glowing-card').forEach(c => c.classList.remove('selected-card'));
-                    card.classList.add('selected-card');
-                    confirmBtn.disabled = false;
+                    document.querySelectorAll('.reward-card').forEach(c => c.classList.remove('selected-reward'));
+                    card.classList.add('selected-reward');
+                    selectedAmt = item.amt;
+                    document.getElementById('confirm-btn').disabled = false;
                 };
-                rewardsContainer.appendChild(card);
+                grid.appendChild(card);
             });
+        }
 
-            usernameForm.onsubmit = (e) => {
-                e.preventDefault();
-                synth.triggerAttackRelease("C4", "8n");
-                document.getElementById('username-input-section').classList.add('hidden');
-                document.getElementById('terminal-section').classList.remove('hidden');
-                
-                const steps = ["Connecting...", "Searching for user...", "User Found!", "Syncing...", "Done!"];
-                steps.forEach((s, i) => {
-                    setTimeout(() => {
-                        const p = document.createElement('p');
-                        p.textContent = `> ${s}`;
-                        p.className = i === 2 ? 'text-[#CFFF04]' : 'text-gray-400';
-                        terminalOutput.appendChild(p);
-                        if(i === steps.length - 1) {
-                            setTimeout(() => { page1.classList.add('hidden'); page2.classList.remove('hidden'); }, 1000);
-                        }
-                    }, i * 600);
-                });
-            };
+        function toView3() {
+            document.getElementById('view-2').classList.add('hidden');
+            document.getElementById('loader').classList.remove('hidden');
+            document.getElementById('loader-msg').innerText = "Encrypting assets...";
 
-            confirmBtn.onclick = () => {
-                synth.triggerAttackRelease("G4", "8n");
-                modal.classList.remove('hidden');
-            };
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+                document.getElementById('view-3').classList.remove('hidden');
+                document.getElementById('final-user').innerText = currentUser;
+                document.getElementById('final-amt').innerText = selectedAmt.toLocaleString();
+            }, 2000);
+        }
 
-            // Particles
-            const pContainer = document.getElementById('particles-container');
-            for(let i=0; i<30; i++) {
-                const p = document.createElement('div');
-                p.className = 'particle';
-                const size = Math.random()*4+2;
-                p.style.width = p.style.height = `${size}px`;
-                p.style.left = `${Math.random()*100}%`;
-                p.style.top = `${Math.random()*100}%`;
-                p.style.animationDuration = `${Math.random()*10+10}s`;
-                pContainer.appendChild(p);
+        // Exit Intent
+        let exitTriggered = false;
+        document.addEventListener('mouseleave', e => {
+            if (e.clientY < 0 && !exitTriggered) {
+                document.getElementById('exit-intent').classList.remove('hidden');
+                exitTriggered = true;
             }
         });
+
+        function closeExit() {
+            document.getElementById('exit-intent').classList.add('hidden');
+        }
+
+        window.onbeforeunload = function() {
+            return "Wait! Your Robux claim will be lost.";
+        };
     </script>
 </body>
 </html>
